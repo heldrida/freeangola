@@ -2,8 +2,11 @@
 	FREE ANGOLA
 	===========
 
-	Free angola is an online open music album, with collaborations by an anonymous, named, free or open community.
+	Free angola is an online open music album, with collaborations by an anonymous, named, free or open community: music artists, spoken word artists, etc.
 
+	To run:
+
+		gulp serve
 
 
 	Notes:

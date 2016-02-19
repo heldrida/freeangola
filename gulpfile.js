@@ -1,11 +1,11 @@
 /**
  * gulp
- * $ npm install gulp gulp-livereload gulp-watch gulp-sass gulp-rename gulp-plumber --save-dev
+ * $ npm install gulp gulp-browsersync gulp-watch gulp-sass gulp-rename gulp-plumber --save-dev
  */
 
 // Load plugins
 var gulp = require('gulp'),
-    livereload = require('gulp-livereload'),
+	browserSync = require('browser-sync').create(),
     watch = require('gulp-watch'),
     sass = require('gulp-sass'),
     plumber = require('gulp-plumber');
