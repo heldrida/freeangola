@@ -1,0 +1,25 @@
+{
+  "minify": true,
+  "options": [
+    "domPrefixes",
+    "prefixes",
+    "addTest",
+    "atRule",
+    "hasEvent",
+    "mq",
+    "prefixed",
+    "prefixedCSS",
+    "prefixedCSSValue",
+    "testAllProps",
+    "testProp",
+    "testStyles",
+    "html5shiv",
+    "setClasses"
+  ],
+  "feature-detects": [
+    "test/flash",
+    "test/video",
+    "test/css/animations",
+	"test/css/calc"
+  ]
+}
