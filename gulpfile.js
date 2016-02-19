@@ -12,7 +12,7 @@ var gulp = require('gulp'),
 
 // Sass
 gulp.task('sass', function () {
-    return gulp.src('./src/sass/**/*.scss')
+    return gulp.src('./src/sass/main.scss')
            .pipe(plumber())
            .pipe(sass())
            .pipe(gulp.dest('./app/css'));
