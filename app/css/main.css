@@ -88,6 +88,9 @@ table {
 .icon-playBtn:before {
   content: "\e902"; }
 
+.icon-playBtnFilled:before {
+  content: "\e903"; }
+
 html, body, .freeangola {
   width: 100%;
   height: 100%; }
@@ -108,8 +111,10 @@ button {
   transition: all 0.2s; }
 
 .freeangola {
-  width: 768px;
-  margin: 0 auto; }
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  font-family: 'Roboto Slab', serif; }
   .freeangola header {
     width: 100%;
     height: 100px;
@@ -164,15 +169,23 @@ button {
     width: 100%;
     height: 486px;
     position: relative;
-    z-index: 1; }
+    z-index: 1;
+    overflow: hidden; }
     .freeangola .main-poster img {
-      height: 100%; }
+      position: absolute;
+      margin: auto;
+      width: auto;
+      height: 100%;
+      left: -100%;
+      right: -100%; }
   .freeangola .player-controllers {
     width: 100%;
     height: 300px;
     background: #C32F27;
-    position: relative; }
-    .freeangola .player-controllers:before {
+    position: relative;
+    z-index: 99;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); }
+    .freeangola .player-controllers:before, .freeangola .player-controllers:after {
       content: " ";
       height: 2px;
       width: 100%;
@@ -180,3 +193,86 @@ button {
       position: absolute;
       top: 0;
       left: 0; }
+    .freeangola .player-controllers:after {
+      top: auto;
+      bottom: 0; }
+    .freeangola .player-controllers .valign {
+      width: 100%;
+      top: calc(50% - 10px);
+      left: 50%;
+      position: absolute;
+      -webkit-transform: translateY(-50%) translateX(-50%);
+      -khtml-transform: translateY(-50%) translateX(-50%);
+      -moz-transform: translateY(-50%) translateX(-50%);
+      -ms-transform: translateY(-50%) translateX(-50%);
+      -o-transform: translateY(-50%) translateX(-50%);
+      transform: translateY(-50%) translateX(-50%); }
+    .freeangola .player-controllers .song-title {
+      font-size: 20px;
+      line-height: 20px;
+      margin: 20px 0;
+      color: #F7A438;
+      text-align: center;
+      font-size: 24px;
+      letter-spacing: 3px; }
+    .freeangola .player-controllers .options {
+      width: 254px;
+      height: 120px;
+      margin: 0 auto; }
+      .freeangola .player-controllers .options > button {
+        float: left;
+        background: transparent; }
+      .freeangola .player-controllers .options .play {
+        border-radius: 50%;
+        border: 3px solid #000;
+        width: 108px;
+        height: 108px;
+        background-color: #F7A438;
+        position: relative;
+        text-indent: 0;
+        top: 50%;
+        margin: 0 25px 0 30px;
+        -webkit-transform: translateY(-50%);
+        -khtml-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%); }
+        .freeangola .player-controllers .options .play[data-status="playing"]:after {
+          content: " ";
+          background-image: url(../img/btn-play-filled.svg?201602191714);
+          background-repeat: no-repeat;
+          background-size: 56px;
+          position: absolute;
+          top: 50%;
+          left: calc(50% + 5px);
+          -webkit-transform: translateX(-50%) translateY(-50%);
+          -khtml-transform: translateX(-50%) translateY(-50%);
+          -moz-transform: translateX(-50%) translateY(-50%);
+          -ms-transform: translateX(-50%) translateY(-50%);
+          -o-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+          content: " ";
+          width: 56px;
+          height: 60px;
+          display: block;
+          color: #000; }
+      .freeangola .player-controllers .options .previous, .freeangola .player-controllers .options .next {
+        width: 42px;
+        height: 30px;
+        display: block;
+        text-indent: -9999px;
+        background-position: center center;
+        background-size: contain;
+        background-image: url(../img/btn-previous.svg?2016021916146);
+        background-repeat: no-repeat;
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -khtml-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%); }
+      .freeangola .player-controllers .options .next {
+        background-image: url(../img/btn-right.svg?2016021916146); }
