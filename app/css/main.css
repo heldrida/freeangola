@@ -91,11 +91,14 @@ table {
 .icon-playBtnFilled:before {
   content: "\e903"; }
 
-html, body, .freeangola {
+html,
+body,
+.freeangola {
   width: 100%;
   height: 100%; }
 
-textarea:focus, input:focus {
+textarea:focus,
+input:focus {
   outline: none; }
 
 *:focus {
@@ -112,12 +115,11 @@ button {
 
 .freeangola {
   width: 100%;
-  max-width: 768px;
   margin: 0 auto;
   font-family: 'Roboto Slab', serif; }
   .freeangola header {
     width: 100%;
-    height: 100px;
+    height: 60px;
     border-bottom: 2px solid #000;
     /* Bar: */
     background: #C32F27;
@@ -125,40 +127,51 @@ button {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     position: relative;
     z-index: 100; }
+    .freeangola header h1 {
+      padding-left: 80px;
+      text-align: left;
+      line-height: 60px;
+      color: #F7A438;
+      letter-spacing: 2px;
+      font-weight: bold; }
     .freeangola header .logo {
       text-indent: -9999px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: 2px solid #000;
-      background: #000;
+      width: 35px;
+      height: 35px;
       display: block;
       position: absolute;
       top: 50%;
       left: 0;
-      -webkit-transform: translateY(-50%) translateX(30px);
-      -khtml-transform: translateY(-50%) translateX(30px);
-      -moz-transform: translateY(-50%) translateX(30px);
-      -ms-transform: translateY(-50%) translateX(30px);
-      -o-transform: translateY(-50%) translateX(30px);
-      transform: translateY(-50%) translateX(30px); }
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border: 1px solid #000;
+      border-radius: 50%;
+      background-image: url(../img/logo-peace-dove.svg?201602201217);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+      -webkit-transform: translateY(-50%) translateX(25px);
+      -khtml-transform: translateY(-50%) translateX(25px);
+      -moz-transform: translateY(-50%) translateX(25px);
+      -ms-transform: translateY(-50%) translateX(25px);
+      -o-transform: translateY(-50%) translateX(25px);
+      transform: translateY(-50%) translateX(25px); }
     .freeangola header .menu {
       overflow: hidden;
       cursor: pointer;
       background: transparent;
-      font-size: 60px;
-      width: 56px;
-      height: 44px;
+      font-size: 42px;
+      width: 39.2px;
+      height: 30.8px;
       position: absolute;
       top: 50%;
       right: 0;
       opacity: 1;
-      -webkit-transform: translateY(-50%) translateX(-30px);
-      -khtml-transform: translateY(-50%) translateX(-30px);
-      -moz-transform: translateY(-50%) translateX(-30px);
-      -ms-transform: translateY(-50%) translateX(-30px);
-      -o-transform: translateY(-50%) translateX(-30px);
-      transform: translateY(-50%) translateX(-30px); }
+      -webkit-transform: translateY(-50%) translateX(-25px);
+      -khtml-transform: translateY(-50%) translateX(-25px);
+      -moz-transform: translateY(-50%) translateX(-25px);
+      -ms-transform: translateY(-50%) translateX(-25px);
+      -o-transform: translateY(-50%) translateX(-25px);
+      transform: translateY(-50%) translateX(-25px); }
       .freeangola header .menu:before {
         position: relative;
         top: -2px;
@@ -167,10 +180,11 @@ button {
         color: #F7A438; }
   .freeangola .main-poster {
     width: 100%;
-    height: 486px;
+    height: 300px;
     position: relative;
     z-index: 1;
-    overflow: hidden; }
+    overflow: hidden;
+    background-color: #000; }
     .freeangola .main-poster img {
       position: absolute;
       margin: auto;
@@ -180,7 +194,7 @@ button {
       right: -100%; }
   .freeangola .player-controllers {
     width: 100%;
-    height: 300px;
+    height: 180px;
     background: #C32F27;
     position: relative;
     z-index: 99;
@@ -198,7 +212,7 @@ button {
       bottom: 0; }
     .freeangola .player-controllers .valign {
       width: 100%;
-      top: calc(50% - 10px);
+      top: calc(50% - 5px);
       left: 50%;
       position: absolute;
       -webkit-transform: translateY(-50%) translateX(-50%);
@@ -210,14 +224,14 @@ button {
     .freeangola .player-controllers .song-title {
       font-size: 20px;
       line-height: 20px;
-      margin: 20px 0;
+      margin: 10px 0;
       color: #F7A438;
       text-align: center;
-      font-size: 24px;
+      font-size: 14px;
       letter-spacing: 3px; }
     .freeangola .player-controllers .options {
-      width: 254px;
-      height: 120px;
+      width: 215px;
+      height: 100px;
       margin: 0 auto; }
       .freeangola .player-controllers .options > button {
         float: left;
@@ -225,8 +239,8 @@ button {
       .freeangola .player-controllers .options .play {
         border-radius: 50%;
         border: 3px solid #000;
-        width: 108px;
-        height: 108px;
+        width: 75px;
+        height: 75px;
         background-color: #F7A438;
         position: relative;
         text-indent: 0;
@@ -242,10 +256,9 @@ button {
           content: " ";
           background-image: url(../img/btn-play-filled.svg?201602191714);
           background-repeat: no-repeat;
-          background-size: 56px;
           position: absolute;
           top: 50%;
-          left: calc(50% + 5px);
+          left: calc(50% + 3px);
           -webkit-transform: translateX(-50%) translateY(-50%);
           -khtml-transform: translateX(-50%) translateY(-50%);
           -moz-transform: translateX(-50%) translateY(-50%);
@@ -253,11 +266,13 @@ button {
           -o-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
           content: " ";
-          width: 56px;
-          height: 60px;
+          background-size: 33.6px;
+          width: 33.6px;
+          height: 36px;
           display: block;
           color: #000; }
-      .freeangola .player-controllers .options .previous, .freeangola .player-controllers .options .next {
+      .freeangola .player-controllers .options .previous,
+      .freeangola .player-controllers .options .next {
         width: 42px;
         height: 30px;
         display: block;
@@ -276,70 +291,133 @@ button {
         transform: translateY(-50%); }
       .freeangola .player-controllers .options .next {
         background-image: url(../img/btn-right.svg?2016021916146); }
-  .freeangola .song-list ul li {
-    position: relative;
-    height: 150px;
-    background-color: #780116;
-    cursor: pointer;
-    -webkit-transition: background-color 0.2s;
-    -khtml-transition: background-color 0.2s;
-    -moz-transition: background-color 0.2s;
-    -ms-transition: background-color 0.2s;
-    -o-transition: background-color 0.2s;
-    transition: background-color 0.2s; }
-    .freeangola .song-list ul li:nth-child(odd) {
-      background-color: #C32F27; }
-    .freeangola .song-list ul li:hover {
-      background-color: #F7A438; }
-      .freeangola .song-list ul li:hover .details {
-        color: #C32F27; }
-  .freeangola .song-list .artist-poster {
-    width: 150px;
-    height: 150px;
+  .freeangola .song-list {
+    overflow: hidden; }
+    .freeangola .song-list ul li {
+      position: relative;
+      height: 150px;
+      background-color: #780116;
+      cursor: pointer;
+      -webkit-transition: background-color 0.2s;
+      -khtml-transition: background-color 0.2s;
+      -moz-transition: background-color 0.2s;
+      -ms-transition: background-color 0.2s;
+      -o-transition: background-color 0.2s;
+      transition: background-color 0.2s; }
+      .freeangola .song-list ul li:nth-child(odd) {
+        background-color: #C32F27; }
+      .freeangola .song-list ul li:hover {
+        background-color: #F7A438; }
+        .freeangola .song-list ul li:hover .details {
+          color: #C32F27; }
+    .freeangola .song-list .artist-poster {
+      width: 150px;
+      height: 150px;
+      float: left;
+      margin-right: 30px; }
+      .freeangola .song-list .artist-poster img {
+        width: 100%;
+        height: 100%; }
+    .freeangola .song-list .details {
+      color: #F7A438;
+      top: 50%;
+      left: 180px;
+      -webkit-transform: translateY(-50%);
+      -khtml-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+      overflow: hidden;
+      position: absolute;
+      width: calc(100% - 180px - 194px); }
+      .freeangola .song-list .details p {
+        letter-spacing: 2px;
+        line-height: 24px;
+        font-size: 18px;
+        font-weight: lighter; }
+      .freeangola .song-list .details h4 {
+        letter-spacing: 4px;
+        line-height: 33px;
+        font-size: 24px;
+        font-weight: bold; }
+    .freeangola .song-list .options {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin: 0 20px;
+      -webkit-transform: translateY(-50%);
+      -khtml-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%); }
+    .freeangola .song-list .like,
+    .freeangola .song-list .play {
+      font-size: 60px;
+      width: 75px;
+      height: 60px;
+      background-color: transparent; }
+      .freeangola .song-list .like.active,
+      .freeangola .song-list .play.active {
+        color: #F7A438; }
+    .freeangola .song-list .play {
+      width: 65px;
+      margin-left: 20px; }
+
+@media only screen and (min-device-width: 1024px) {
+  .freeangola main > .column {
     float: left;
-    margin-right: 30px; }
-    .freeangola .song-list .artist-poster img {
-      width: 100%;
-      height: 100%; }
-  .freeangola .song-list .details {
-    color: #F7A438;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -khtml-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
+    width: 100%; } }
+
+@media only screen and (max-device-width: 480px) {
+  .freeangola .col-r {
     transform: translateY(-50%);
-    overflow: hidden;
-    position: relative; }
-    .freeangola .song-list .details p {
-      letter-spacing: 2px;
-      line-height: 24px;
-      font-size: 18px;
-      font-weight: lighter; }
-    .freeangola .song-list .details h4 {
-      letter-spacing: 4px;
-      line-height: 33px;
-      font-size: 24px;
-      font-weight: bold; }
+    position: relative;
+    top: 50%; }
   .freeangola .song-list .options {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    margin: 0 20px;
-    -webkit-transform: translateY(-50%);
-    -khtml-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%); }
-  .freeangola .song-list .like, .freeangola .song-list .play {
-    font-size: 60px;
-    width: 75px;
-    height: 60px;
-    background-color: transparent; }
-    .freeangola .song-list .like.active, .freeangola .song-list .play.active {
-      color: #F7A438; }
-  .freeangola .song-list .play {
-    width: 65px;
-    margin-left: 20px; }
+    position: relative;
+    top: auto;
+    right: 2px;
+    padding: 0;
+    margin: 0;
+    -webkit-transform: translateY(0);
+    -khtml-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0); }
+    .freeangola .song-list .options button {
+      width: 37.5px;
+      height: 30px;
+      font-size: 30px;
+      display: inline-block;
+      padding: 0;
+      margin-right: 5px; }
+    .freeangola .song-list .options .play {
+      margin-left: 0px; }
+  .freeangola .song-list .details {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: auto;
+    padding: 0;
+    padding-right: 25px;
+    margin: 0;
+    margin-bottom: 10px;
+    -webkit-transform: translateY(0);
+    -khtml-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0); }
+    .freeangola .song-list .details p {
+      font-weight: normal;
+      letter-spacing: 1.2px;
+      line-height: 14.4px;
+      font-size: 10.8px; }
+    .freeangola .song-list .details h4 {
+      letter-spacing: 2px;
+      line-height: 16.5px;
+      font-size: 12px; } }
