@@ -1,5 +1,12 @@
 console.log('app.js');
 
+/*
+    Get users ID:
+
+        https://api.soundcloud.com/resolve?url=https%3A//soundcloud.com/userName&client_id=YOUR_CLIENT_ID
+        heldrida is 2575422
+ */
+
 window.addEventListener("load", function() {
 
     function FreeAngola() {
@@ -17,11 +24,30 @@ window.addEventListener("load", function() {
 
             this.setProperties();
 
+            this.initSC();
+
+        },
+
+        initSC: function() {
+
+            SC.initialize({
+                client_id: this.SC_APP_CLIENT_ID,
+                redirect_uri: ''
+            });
+
+            SC.get('/users/2575422/tracks').then(function(tracks) {
+                this.tracks = tracks;
+            }.bind(this));
+
         },
 
         setProperties: function() {
 
             console.log('setProperties fn()');
+
+            this.SC_USER_ID = 2575422;
+
+            this.SC_APP_CLIENT_ID = "995ae17ff20ba9d16401a3b94dd1faa1";
 
             this.songListUl = document.querySelector('.song-list');
 
