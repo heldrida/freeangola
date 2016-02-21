@@ -262,6 +262,21 @@ button {
             margin-left: 20px;
         }
     }
+    .percentage-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: purple;
+        }
+    }
 }
 
 @media only screen and (min-device-width: 1024px) {

@@ -26,6 +26,8 @@ window.addEventListener("load", function() {
 
             this.initSC();
 
+            this.setEventListeners();
+
         },
 
         initSC: function() {
@@ -35,9 +37,29 @@ window.addEventListener("load", function() {
                 redirect_uri: ''
             });
 
-            SC.get('/users/2575422/tracks').then(function(tracks) {
-                this.tracks = tracks;
+            SC.get('/users/2575422/playlists/free-angola').then(function(playlist) {
+                this.tracks = playlist.tracks;
+                this.pubSub.publish("/app/events/soundcloud/loaded_tracks", { tracks: this.tracks });
             }.bind(this));
+
+
+            var t = _.find(this.tracks, function(t) {
+                return t.id === 25159425;
+            });
+
+            SC.stream('/users/2575422/tracks/25159425').then(function(player) {
+
+                player.play();
+
+                player.on('time', function() {
+                    var x = this.songPercentage(t.duration, player.currentTime());
+                    console.log('x', x);
+
+                    this.percentageBarSpan.style.width = (x * 100) + "%";
+
+                }.bind(this));
+
+            });
 
         },
 
@@ -45,23 +67,36 @@ window.addEventListener("load", function() {
 
             console.log('setProperties fn()');
 
+            this.pubSub = PubSub;
+
             this.SC_USER_ID = 2575422;
 
             this.SC_APP_CLIENT_ID = "995ae17ff20ba9d16401a3b94dd1faa1";
 
             this.songListUl = document.querySelector('.song-list');
 
-            this.compileTemplates();
+            this.player = null;
+
+            this.percentageBar = document.querySelector('.percentage-bar');
+            this.percentageBarSpan = this.percentageBar.querySelector('span');
 
         },
 
-        compileTemplates: function() {
+        setEventListeners: function() {
 
-            this.compileSongList();
+            this.pubSub.subscribe("/app/events/soundcloud/loaded_tracks", this.compileTemplates.bind(this));
 
         },
 
-        compileSongList: function() {
+        compileTemplates: function(params) {
+
+            this.compileSongList(params.tracks);
+
+        },
+
+        compileSongList: function(tracks) {
+
+            console.log(tracks);
 
             var data = {
                 songs: [{
@@ -98,6 +133,16 @@ window.addEventListener("load", function() {
             var c = compiled(data);
 
             this.songListUl.innerHTML = c;
+
+        },
+
+        songPercentage: function(totalDuration, currentTime) {
+
+            if (_.isNil(totalDuration) || _.isNil(currentTime)) {
+                return null;
+            }
+
+            return 1 - ((totalDuration - currentTime) / totalDuration);
 
         }
 
