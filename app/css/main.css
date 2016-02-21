@@ -376,7 +376,8 @@ button {
       left: 0;
       width: 0%;
       height: 100%;
-      background: purple; }
+      background-color: #F7A438;
+      opacity: 0.5; }
 
 @media only screen and (min-device-width: 1024px) {
   .freeangola main > .column {

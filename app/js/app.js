@@ -37,29 +37,41 @@ window.addEventListener("load", function() {
                 redirect_uri: ''
             });
 
-            SC.get('/users/2575422/playlists/free-angola').then(function(playlist) {
+            SC.get('/users/2575422/playlists/free-angola', {
+                useHTML5Audio: true,
+                preferFlash: false
+            }).then(function(playlist) {
                 this.tracks = playlist.tracks;
                 this.pubSub.publish("/app/events/soundcloud/loaded_tracks", { tracks: this.tracks });
-            }.bind(this));
 
+                SC.stream('/users/2575422/tracks/25159425').then(function(player) {
 
-            var t = _.find(this.tracks, function(t) {
-                return t.id === 25159425;
-            });
+                    this.player = player;
 
-            SC.stream('/users/2575422/tracks/25159425').then(function(player) {
+                    var arr = _.values(this.tracks);
+                    var currentTrack = _.find(this.tracks, { id: 25159425 });
 
-                player.play();
+                    player.on('time', function() {
+                        var p = this.songPercentage(currentTrack.duration, player.currentTime());
+                        TweenLite.to(this.percentageBarSpan, 1.5, { css: { width: (p * 100 + "%") } });
+                    }.bind(this));
 
-                player.on('time', function() {
-                    var x = this.songPercentage(t.duration, player.currentTime());
-                    console.log('x', x);
+                    player.on('start', function() {
 
-                    this.percentageBarSpan.style.width = (x * 100) + "%";
+                        this.percentageBarSpan.setAttribute('style', '');
+
+                    }.bind(this));
+
+                    player.on('finish', function() {
+
+                        this.percentageBarSpan.setAttribute('style', '');
+
+                    }.bind(this));
+
 
                 }.bind(this));
 
-            });
+            }.bind(this));
 
         },
 
@@ -80,11 +92,29 @@ window.addEventListener("load", function() {
             this.percentageBar = document.querySelector('.percentage-bar');
             this.percentageBarSpan = this.percentageBar.querySelector('span');
 
+            this.setAnimationTimelines();
+
+            this.btnPlay = document.querySelector('button.play');
+
         },
 
         setEventListeners: function() {
 
             this.pubSub.subscribe("/app/events/soundcloud/loaded_tracks", this.compileTemplates.bind(this));
+
+            this.btnPlay.addEventListener("click", this.btnPlayerHandler.bind(this));
+
+        },
+
+        setAnimationTimelines: function() {
+
+            /*
+            this.timelinePercentageBar = new TimelineLite();
+
+            this.timelinePercentageBar.to(this.percentageBarSpan, 3, { width: "100%" }, 0);
+
+            this.timelinePercentageBar.pause();
+            */
 
         },
 
@@ -143,6 +173,12 @@ window.addEventListener("load", function() {
             }
 
             return 1 - ((totalDuration - currentTime) / totalDuration);
+
+        },
+
+        btnPlayerHandler: function(e) {
+
+            this.player.play();
 
         }
 
