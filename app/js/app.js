@@ -26,6 +26,8 @@ window.addEventListener("load", function() {
 
             this.setEventListeners();
 
+	        this.setPlayNextPrevControllerVsibility();
+
         },
 
         setProperties: function() {
@@ -57,6 +59,8 @@ window.addEventListener("load", function() {
                 this.pubSub.publish("/app/events/soundcloud/loaded_tracks", playlist);
 
             }.bind(this));
+
+            this.playControllersCommonOpacity = 0.3;
 
         },
 
@@ -202,6 +206,8 @@ window.addEventListener("load", function() {
                 }
             }
 
+            this.setPlayNextPrevControllerVsibility();
+
         },
 
         scTimeUpdateHandler: function(e) {
@@ -209,6 +215,29 @@ window.addEventListener("load", function() {
             var duration = e.path[0].duration;
             var p = this.songPercentage(duration, currentTime);
             TweenLite.to(this.percentageBarSpan, 1.5, { css: { width: (p * 100 + "%") } });
+        },
+
+        setPlayNextPrevControllerVsibility: function () {
+
+        	if (!this.scPlayer._playlistIndex) {
+        		TweenLite.to(this.btnPrevious, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
+        		return null;
+        	}
+
+            // hide button next if current index equals or bigger then length of tracks
+            if (this.scPlayer._playlistIndex >= this.scPlayer._playlist.tracks.length - 1) {
+            	TweenLite.to(this.btnNext, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
+            } else {
+            	TweenLite.to(this.btnNext, 0.2, { css: { opacity: 1 } });
+            }
+
+            // hide button previous if current index is first
+            if (!this.scPlayer._playlistIndex || this.scPlayer._playlistIndex === 0) {
+            	TweenLite.to(this.btnPrevious, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
+            } else {
+            	TweenLite.to(this.btnPrevious, 0.2, { css: { opacity: 1 } });
+            }
+
         }
 
     };
