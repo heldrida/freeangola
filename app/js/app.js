@@ -60,7 +60,7 @@ window.addEventListener("load", function() {
 
             }.bind(this));
 
-            this.playControllersCommonOpacity = 0.3;
+            this.playControllersCommonOpacity = 0.5;
 
         },
 
@@ -77,7 +77,7 @@ window.addEventListener("load", function() {
                 	console.log('ended!');
                 });
 
-                this.scPlayer.on('timeupdate', this.scTimeUpdateHandler.bind(this));
+                //this.scPlayer.on('timeupdate', this.scTimeUpdateHandler.bind(this));
 
             }.bind(this));
 
@@ -86,6 +86,8 @@ window.addEventListener("load", function() {
             this.btnPrevious.addEventListener("click", this.btnPreviousHandler.bind(this));
 
             this.pubSub.subscribe("/app/events/soundcloud/click", this.scEventHandler.bind(this));
+
+            window.requestAnimationFrame(this.rafStep.bind(this));
 
         },
 
@@ -195,7 +197,8 @@ window.addEventListener("load", function() {
 
             // reset bar if any play next or previous options selected
             if (_.indexOf(["next", "previous"], param) > -1) {
-                TweenLite.set(this.percentageBarSpan, { css: { width: "0%" } });
+                //TweenLite.set(this.percentageBarSpan, { css: { width: "0%" } });
+				this.percentageBarSpan.style.width = (0 + "%");
 
                 // ensure that the button attribute is set correctly
                 // depending on the next/previous transition playing status
@@ -210,11 +213,11 @@ window.addEventListener("load", function() {
 
         },
 
-        scTimeUpdateHandler: function(e) {
-            var currentTime = e.path[0].currentTime;
-            var duration = e.path[0].duration;
+        scTimeUpdateHandler: function() {
+            var currentTime = this.scPlayer.audio.currentTime;
+            var duration = this.scPlayer.audio.duration;
             var p = this.songPercentage(duration, currentTime);
-            TweenLite.to(this.percentageBarSpan, 1.5, { css: { width: (p * 100 + "%") } });
+        	this.percentageBarSpan.style.width = (p * 100 + "%");
         },
 
         setPlayNextPrevControllerVsibility: function () {
@@ -237,6 +240,13 @@ window.addEventListener("load", function() {
             } else {
             	TweenLite.to(this.btnPrevious, 0.2, { css: { opacity: 1 } });
             }
+
+        },
+
+        rafStep: function () {
+
+        	this.scTimeUpdateHandler.call(this);
+        	window.requestAnimationFrame(this.rafStep.bind(this));
 
         }
 
