@@ -145,6 +145,14 @@ button {
 			text-align: center;
 			font-size: 14px;
 			letter-spacing: 3px;
+			display: block;
+			height: 20px;
+			min-width: 50px;
+
+			.tracker {
+				color: $red-dark;
+				margin-right: 10px;
+			}
 		}
 
 		.options {

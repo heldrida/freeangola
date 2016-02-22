@@ -34,6 +34,8 @@ window.addEventListener("load", function() {
 
             console.log('setProperties fn()');
 
+            this.freeAngolaContainer = document.querySelector('.freeangola');
+
             this.pubSub = PubSub;
 
             this.songListUl = document.querySelector('.song-list');
@@ -63,6 +65,10 @@ window.addEventListener("load", function() {
 
             this.playControllersCommonOpacity = 0.5;
 
+            this.songTitle = this.freeAngolaContainer.querySelector('.song-title');
+            this.songTitleTxt = this.songTitle.querySelector('.txt');
+            this.songTitleTracker = this.songTitle.querySelector('.tracker');
+
         },
 
         setEventListeners: function() {
@@ -78,18 +84,13 @@ window.addEventListener("load", function() {
                 	console.log('ended!');
                 });
 
-                this.scPlayer.on('play', function () {
-
-                	// reset first
-                	_.forEach(this.songListUlLi, function (li) {
-                		li.classList.remove('active');
-                	});
-
-					this.songListUlLi[this.scPlayer._playlistIndex].classList.add('active');
-                }.bind(this));
+                this.scPlayer.on('play', this.playCallHandler.bind(this));
 
                 // set property
                 this.songListUlLi = this.songListUl.querySelectorAll('li');
+
+                // set initial tracker info
+                this.updateTracker(0);
 
             }.bind(this));
 
@@ -259,6 +260,37 @@ window.addEventListener("load", function() {
 
         	this.scTimeUpdateHandler.call(this);
         	window.requestAnimationFrame(this.rafStep.bind(this));
+
+        },
+
+        playCallHandler: function () {
+
+			// reset first
+			_.forEach(this.songListUlLi, function (li) {
+				li.classList.remove('active');
+			});
+
+			this.songListUlLi[this.scPlayer._playlistIndex].classList.add('active');
+
+			this.setCurrentSongMetadata();
+
+        },
+
+        setCurrentSongMetadata: function () {
+
+			var track = this.scPlayer._playlist.tracks[this.scPlayer._playlistIndex ? this.scPlayer._playlistIndex : 0];
+
+			this.songTitleTxt.innerHTML = track.title;
+
+			this.updateTracker(this.scPlayer._playlistIndex);
+
+        },
+
+        updateTracker: function (n) {
+
+ 			var n = !n ? 0 : n;
+
+            this.songTitleTracker.innerHTML = n + " / " + this.scPlayer._playlist.track_count;
 
         }
 

@@ -235,7 +235,13 @@ button {
       color: #F7A438;
       text-align: center;
       font-size: 14px;
-      letter-spacing: 3px; }
+      letter-spacing: 3px;
+      display: block;
+      height: 20px;
+      min-width: 50px; }
+      .freeangola .player-controllers .song-title .tracker {
+        color: #780116;
+        margin-right: 10px; }
     .freeangola .player-controllers .options {
       width: 215px;
       height: 100px;
