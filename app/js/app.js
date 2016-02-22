@@ -24,54 +24,7 @@ window.addEventListener("load", function() {
 
             this.setProperties();
 
-            this.initSC();
-
             this.setEventListeners();
-
-        },
-
-        initSC: function() {
-
-            SC.initialize({
-                client_id: this.SC_APP_CLIENT_ID,
-                redirect_uri: ''
-            });
-
-            SC.get('/users/2575422/playlists/free-angola', {
-                useHTML5Audio: true,
-                preferFlash: false
-            }).then(function(playlist) {
-                this.tracks = playlist.tracks;
-                this.pubSub.publish("/app/events/soundcloud/loaded_tracks", { tracks: this.tracks });
-
-                SC.stream('/users/2575422/tracks/25159425').then(function(player) {
-
-                    this.player = player;
-
-                    var arr = _.values(this.tracks);
-                    var currentTrack = _.find(this.tracks, { id: 25159425 });
-
-                    player.on('time', function() {
-                        var p = this.songPercentage(currentTrack.duration, player.currentTime());
-                        TweenLite.to(this.percentageBarSpan, 1.5, { css: { width: (p * 100 + "%") } });
-                    }.bind(this));
-
-                    player.on('start', function() {
-
-                        this.percentageBarSpan.setAttribute('style', '');
-
-                    }.bind(this));
-
-                    player.on('finish', function() {
-
-                        this.percentageBarSpan.setAttribute('style', '');
-
-                    }.bind(this));
-
-
-                }.bind(this));
-
-            }.bind(this));
 
         },
 
@@ -81,13 +34,7 @@ window.addEventListener("load", function() {
 
             this.pubSub = PubSub;
 
-            this.SC_USER_ID = 2575422;
-
-            this.SC_APP_CLIENT_ID = "995ae17ff20ba9d16401a3b94dd1faa1";
-
             this.songListUl = document.querySelector('.song-list');
-
-            this.player = null;
 
             this.percentageBar = document.querySelector('.percentage-bar');
             this.percentageBarSpan = this.percentageBar.querySelector('span');
@@ -95,14 +42,42 @@ window.addEventListener("load", function() {
             this.setAnimationTimelines();
 
             this.btnPlay = document.querySelector('button.play');
+            this.btnNext = document.querySelector('button.next');
+            this.btnPrevious = document.querySelector('button.previous');
+
+            this.SC_USER_ID = 2575422;
+
+            this.SC_APP_CLIENT_ID = "995ae17ff20ba9d16401a3b94dd1faa1";
+
+            this.scPlayer = new SoundCloudAudio(this.SC_APP_CLIENT_ID);
+
+            this.scPlayer.resolve('http://soundcloud.com/heldrida/sets/free-angola', function(playlist) {
+
+                this.scPlaylist = playlist;
+                this.pubSub.publish("/app/events/soundcloud/loaded_tracks", playlist);
+
+            }.bind(this));
 
         },
 
         setEventListeners: function() {
 
-            this.pubSub.subscribe("/app/events/soundcloud/loaded_tracks", this.compileTemplates.bind(this));
+            // wait till the tracks are available
+            this.pubSub.subscribe("/app/events/soundcloud/loaded_tracks", function(playlist) {
 
-            this.btnPlay.addEventListener("click", this.btnPlayerHandler.bind(this));
+                this.compileTemplates.call(this, { playlist: playlist });
+
+                this.scPlayer.on('ended', this.btnNextHandler.bind(this));
+
+                this.scPlayer.on('timeupdate', this.scTimeUpdateHandler.bind(this));
+
+            }.bind(this));
+
+            this.btnPlay.addEventListener("click", this.btnPlayHandler.bind(this));
+            this.btnNext.addEventListener("click", this.btnNextHandler.bind(this));
+            this.btnPrevious.addEventListener("click", this.btnPreviousHandler.bind(this));
+
+            this.pubSub.subscribe("/app/events/soundcloud/click", this.scEventHandler.bind(this));
 
         },
 
@@ -120,13 +95,11 @@ window.addEventListener("load", function() {
 
         compileTemplates: function(params) {
 
-            this.compileSongList(params.tracks);
+            this.compileSongList(params.playlist.tracks);
 
         },
 
         compileSongList: function(tracks) {
-
-            console.log(tracks);
 
             var data = {
                 songs: [{
@@ -156,11 +129,21 @@ window.addEventListener("load", function() {
                 }]
             };
 
+            var data = _.map(tracks, function(track) {
+                return {
+                    poster: track.artwork_url,
+                    title: track.title,
+                    artist: "Artist name"
+                };
+            });
+
+            console.log(data);
+
             // Use the "evaluate" delimiter to execute JavaScript and generate HTML.
             var tmpl = document.querySelector("#tmpl-song-list-item").innerHTML;
             var compiled = _.template(tmpl);
 
-            var c = compiled(data);
+            var c = compiled({ tracks: data });
 
             this.songListUl.innerHTML = c;
 
@@ -176,10 +159,67 @@ window.addEventListener("load", function() {
 
         },
 
-        btnPlayerHandler: function(e) {
+        btnPlayHandler: function(e) {
 
-            this.player.play();
+            this.pubSub.publish("/app/events/soundcloud/click", "play");
 
+            var status = this.btnPlay.getAttribute('data-status');
+
+            if (status.toLowerCase() === "stop") {
+
+                // change state
+                this.btnPlay.setAttribute('data-status', 'play');
+
+                this.scPlayer.play();
+
+            } else if (status.toLowerCase() === "pause") {
+
+                // change state
+                this.btnPlay.setAttribute('data-status', 'pause');
+
+                this.scPlayer.pause();
+
+            } else {
+
+                // change state
+                this.btnPlay.setAttribute('data-status', 'stop');
+
+                this.scPlayer.pause();
+
+            }
+
+        },
+
+        btnNextHandler: function() {
+
+            this.pubSub.publish("/app/events/soundcloud/click", "next");
+
+            this.scPlayer.next();
+
+        },
+
+        btnPreviousHandler: function() {
+
+            this.pubSub.publish("/app/events/soundcloud/click", "previous");
+
+            this.scPlayer.previous();
+
+        },
+
+        scEventHandler: function(param) {
+
+            // reset bar if any play next or previous options selected
+            if (_.indexOf(["play", "next", "previous"], param) > -1) {
+                TweenLite.set(this.percentageBarSpan, { css: { width: "0%" } });
+            }
+
+        },
+
+        scTimeUpdateHandler: function(e) {
+            var currentTime = e.path[0].currentTime;
+            var duration = e.path[0].duration;
+            var p = this.songPercentage(duration, currentTime);
+            TweenLite.to(this.percentageBarSpan, 1.5, { css: { width: (p * 100 + "%") } });
         }
 
     };

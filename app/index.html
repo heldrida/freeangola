@@ -28,7 +28,7 @@
                     <div class="valign">
                         <div class="options">
                             <button class="previous">previous</button>
-                            <button class="play" data-status="playing">play</button>
+                            <button class="play" data-status="stop"></button>
                             <button class="next">next</button>
                         </div>
                         <div class="song-title">artist - song title goes here</div>
@@ -47,17 +47,17 @@
     <!-- start: templates -->
     <script type="text/template" id="tmpl-song-list-item" class="template">
         <ul>
-            <% _.forEach(songs, function(song) { %>
+            <% _.forEach(tracks, function(track) { %>
                 <li>
                     <div class="artist-poster">
-                        <img src="<%- song.poster %>" alt="<%- song.artist %> - <%- song.title %>">
+                        <img src="<%- track.poster %>" alt="<%- track.title %> - <%- track.title %>">
                     </div>
                     <div class="col-r">
                         <div class="details">
                             <p>
-                                <%- song.title %>
+                                <%- track.title %>
                             </p>
-                            <h4><%- song.artist %></h4>
+                            <h4><%- track.artist %></h4>
                         </div>
                         <div class="options">
                             <button class="like icon-heartShape"></button>
@@ -78,6 +78,7 @@
     <script src="bower_components/lodash/dist/lodash.min.js"></script>
     <script src="bower_components/modernizr/modernizr.js"></script>
     <script src="bower_components/pubsub.js/src/pubsub.js"></script>
+    <script src="bower_components/soundcloud-audio/dist/soundcloud-audio.min.js"></script>
     <script src="js/app.js"></script>
     <!-- end: scripts -->
 </body>

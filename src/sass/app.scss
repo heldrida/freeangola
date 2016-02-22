@@ -152,7 +152,8 @@ button {
                 top: 50%;
                 margin: 0 25px 0 30px;
                 @include transform(translateY(-50%));
-                &[data-status="playing"] {
+                &[data-status="pause"],
+                &[data-status="stop"] {
                     &:after {
                         content: " ";
                         background-image: url(../img/btn-play-filled.svg?201602191714);
@@ -163,6 +164,23 @@ button {
                         @include transform(translateX(-50%) translateY(-50%));
                         content: " ";
                         background-size: 56px * 0.6;
+                        width: 56px * 0.6;
+                        height: 60px * 0.6;
+                        display: block;
+                        color: #000;
+                    }
+                }
+                &[data-status="play"] {
+                    &:after {
+                        content: " ";
+                        background-image: url(../img/pause-button.svg?201602191714);
+                        background-repeat: no-repeat;
+                        position: absolute;
+                        top: 50%;
+                        left: calc(50% + 2px);
+                        @include transform(translateX(-50%) translateY(-50%));
+                        content: " ";
+                        background-size: 30px;
                         width: 56px * 0.6;
                         height: 60px * 0.6;
                         display: block;

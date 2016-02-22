@@ -66,7 +66,8 @@ table {
   font-weight: normal;
   font-style: normal; }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: none;
@@ -79,16 +80,22 @@ table {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon-heartShape:before {
+.icon-pause-button:before {
+  content: "\e905"; }
+
+.icon-stop-button:before {
   content: "\e900"; }
 
-.icon-Menubutton:before {
+.icon-btn-play-filled:before {
+  content: "\e904"; }
+
+.icon-heartShape:before {
   content: "\e901"; }
 
-.icon-playBtn:before {
+.icon-Menubutton:before {
   content: "\e902"; }
 
-.icon-playBtnFilled:before {
+.icon-playBtn:before {
   content: "\e903"; }
 
 html,
@@ -252,7 +259,7 @@ button {
         -ms-transform: translateY(-50%);
         -o-transform: translateY(-50%);
         transform: translateY(-50%); }
-        .freeangola .player-controllers .options .play[data-status="playing"]:after {
+        .freeangola .player-controllers .options .play[data-status="pause"]:after, .freeangola .player-controllers .options .play[data-status="stop"]:after {
           content: " ";
           background-image: url(../img/btn-play-filled.svg?201602191714);
           background-repeat: no-repeat;
@@ -267,6 +274,25 @@ button {
           transform: translateX(-50%) translateY(-50%);
           content: " ";
           background-size: 33.6px;
+          width: 33.6px;
+          height: 36px;
+          display: block;
+          color: #000; }
+        .freeangola .player-controllers .options .play[data-status="play"]:after {
+          content: " ";
+          background-image: url(../img/pause-button.svg?201602191714);
+          background-repeat: no-repeat;
+          position: absolute;
+          top: 50%;
+          left: calc(50% + 2px);
+          -webkit-transform: translateX(-50%) translateY(-50%);
+          -khtml-transform: translateX(-50%) translateY(-50%);
+          -moz-transform: translateX(-50%) translateY(-50%);
+          -ms-transform: translateX(-50%) translateY(-50%);
+          -o-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+          content: " ";
+          background-size: 30px;
           width: 33.6px;
           height: 36px;
           display: block;
