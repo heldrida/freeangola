@@ -347,7 +347,7 @@ button {
 			position: absolute;
 			top: 50%;
 			right: 0;
-			margin: 0 20px;
+			margin: 0 30px;
 			@include transform(translateY(-50%));
 		}
 
@@ -355,11 +355,19 @@ button {
 		.play {
 			font-size: 60px;
 			width: 75px;
-			height: 60px;
+			height: 75px;
 			background-color: transparent;
 
 			&.active {
 				color: $yellow-gold;
+			}
+		}
+
+		.like {
+			pointer-events: auto;
+
+			&:hover {
+				color: $red;
 			}
 		}
 

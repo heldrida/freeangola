@@ -80,23 +80,45 @@ table {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+/*
 .icon-pause-button:before {
-  content: "\e905"; }
+    content: "\e905";
+}
 
 .icon-stop-button:before {
-  content: "\e900"; }
+    content: "\e900";
+}
 
 .icon-btn-play-filled:before {
-  content: "\e904"; }
+    content: "\e904";
+}
 
 .icon-heartShape:before {
-  content: "\e901"; }
+    content: "\e901";
+}
 
 .icon-Menubutton:before {
-  content: "\e902"; }
+    content: "\e902";
+}
 
 .icon-playBtn:before {
+    content: "\e903";
+}
+*/
+.icon-heart-with-social-media-facebook-logo:before {
+  content: "\e904"; }
+
+.icon-playBtnFilled:before {
   content: "\e903"; }
+
+.icon-heartShape:before {
+  content: "\e900"; }
+
+.icon-Menubutton:before {
+  content: "\e901"; }
+
+.icon-playBtn:before {
+  content: "\e902"; }
 
 html,
 body,
@@ -433,7 +455,7 @@ button {
       position: absolute;
       top: 50%;
       right: 0;
-      margin: 0 20px;
+      margin: 0 30px;
       -webkit-transform: translateY(-50%);
       -khtml-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -444,11 +466,15 @@ button {
     .freeangola .song-list .play {
       font-size: 60px;
       width: 75px;
-      height: 60px;
+      height: 75px;
       background-color: transparent; }
       .freeangola .song-list .like.active,
       .freeangola .song-list .play.active {
         color: #F7A438; }
+    .freeangola .song-list .like {
+      pointer-events: auto; }
+      .freeangola .song-list .like:hover {
+        color: #C32F27; }
     .freeangola .song-list .play {
       width: 65px;
       margin-left: 20px; }
