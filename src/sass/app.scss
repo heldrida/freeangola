@@ -47,6 +47,10 @@ button {
 	}
 
 	&.menu-open {
+		header .menu {
+			@include transform(rotate(90deg));
+		}
+
 		header,
 		main {
 			@include transform(translateX(-80%));
@@ -107,16 +111,15 @@ button {
 			width: 56px * 0.7;
 			height: 44px * 0.7;
 			position: absolute;
-			top: 50%;
-			right: 0;
+			top: calc(50% - 15px);
+			right: $common-margin-lr;
 			opacity: 1;
-			@include transform(translateY(-50%) translateX(-$common-margin-lr));
-
-			&:before {
-				position: relative;
-				top: -2px;
-				left: -12px;
-			}
+			@include transition(transform 0.3s);
+			background-image: url(../img/menu.svg?201602221603);
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: 40px;
+			transform-origin: center;
 
 			&:hover {
 				color: $yellow-gold;

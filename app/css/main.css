@@ -147,6 +147,13 @@ button {
       top: 0;
       left: 0px;
       box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.4); }
+  .freeangola.menu-open header .menu {
+    -webkit-transform: rotate(90deg);
+    -khtml-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg); }
   .freeangola.menu-open header,
   .freeangola.menu-open main {
     -webkit-transform: translateX(-80%);
@@ -215,19 +222,20 @@ button {
       width: 39.2px;
       height: 30.8px;
       position: absolute;
-      top: 50%;
-      right: 0;
+      top: calc(50% - 15px);
+      right: 25px;
       opacity: 1;
-      -webkit-transform: translateY(-50%) translateX(-25px);
-      -khtml-transform: translateY(-50%) translateX(-25px);
-      -moz-transform: translateY(-50%) translateX(-25px);
-      -ms-transform: translateY(-50%) translateX(-25px);
-      -o-transform: translateY(-50%) translateX(-25px);
-      transform: translateY(-50%) translateX(-25px); }
-      .freeangola header .menu:before {
-        position: relative;
-        top: -2px;
-        left: -12px; }
+      -webkit-transition: transform 0.3s;
+      -khtml-transition: transform 0.3s;
+      -moz-transition: transform 0.3s;
+      -ms-transition: transform 0.3s;
+      -o-transition: transform 0.3s;
+      transition: transform 0.3s;
+      background-image: url(../img/menu.svg?201602221603);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 40px;
+      transform-origin: center; }
       .freeangola header .menu:hover {
         color: #F7A438; }
   .freeangola .main-poster {
