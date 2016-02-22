@@ -101,39 +101,12 @@ window.addEventListener("load", function() {
 
         compileSongList: function(tracks) {
 
-            var data = {
-                songs: [{
-                    poster: "img/temp/album-cover-01.jpg?201602191749",
-                    title: "Song title",
-                    artist: "Artist name"
-                }, {
-                    poster: "img/temp/album-cover-02.jpg?201602191749",
-                    title: "Song title",
-                    artist: "Artist name"
-                }, {
-                    poster: "img/temp/album-cover-03.jpg?201602191749",
-                    title: "Song title",
-                    artist: "Artist name"
-                }, {
-                    poster: "img/temp/album-cover-04.jpg?201602191749",
-                    title: "Song title",
-                    artist: "Artist name"
-                }, {
-                    poster: "img/temp/album-cover-05.jpg?201602191749",
-                    title: "Song title",
-                    artist: "Artist name"
-                }, {
-                    poster: "img/temp/album-cover-06.jpg?201602191749",
-                    title: "Song title",
-                    artist: "Artist name"
-                }]
-            };
-
             var data = _.map(tracks, function(track) {
                 return {
                     poster: track.artwork_url,
                     title: track.title,
-                    artist: "Artist name"
+                    artist: "Artist name",
+                    waveform: track.waveform_url
                 };
             });
 
