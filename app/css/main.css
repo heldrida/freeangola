@@ -124,6 +124,51 @@ button {
   width: 100%;
   margin: 0 auto;
   font-family: 'Roboto Slab', serif; }
+  .freeangola .sidebar {
+    background-color: #C32F27;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    -webkit-transform: translateX(100%);
+    -khtml-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); }
+    .freeangola .sidebar:before {
+      content: " ";
+      width: 2px;
+      height: 100%;
+      background-color: #000;
+      position: absolute;
+      top: 0;
+      left: 0px;
+      box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.4); }
+  .freeangola.menu-open header,
+  .freeangola.menu-open main {
+    -webkit-transform: translateX(-80%);
+    -khtml-transform: translateX(-80%);
+    -moz-transform: translateX(-80%);
+    -ms-transform: translateX(-80%);
+    -o-transform: translateX(-80%);
+    transform: translateX(-80%); }
+  .freeangola.menu-open .sidebar {
+    -webkit-transform: translateX(20%);
+    -khtml-transform: translateX(20%);
+    -moz-transform: translateX(20%);
+    -ms-transform: translateX(20%);
+    -o-transform: translateX(20%);
+    transform: translateX(20%); }
+  .freeangola header, .freeangola main, .freeangola .sidebar {
+    -webkit-transition: transform 0.3s;
+    -khtml-transition: transform 0.3s;
+    -moz-transition: transform 0.3s;
+    -ms-transition: transform 0.3s;
+    -o-transition: transform 0.3s;
+    transition: transform 0.3s; }
   .freeangola header {
     width: 100%;
     height: 60px;

@@ -69,6 +69,8 @@ window.addEventListener("load", function() {
             this.songTitleTxt = this.songTitle.querySelector('.txt');
             this.songTitleTracker = this.songTitle.querySelector('.tracker');
 
+            this.menu = this.freeAngolaContainer.querySelector('.menu');
+
         },
 
         setEventListeners: function() {
@@ -101,6 +103,8 @@ window.addEventListener("load", function() {
             this.pubSub.subscribe("/app/events/soundcloud/click", this.scEventHandler.bind(this));
 
             window.requestAnimationFrame(this.rafStep.bind(this));
+
+            this.menu.addEventListener('click', this.btnMenuClickHandler.bind(this));
 
         },
 
@@ -282,7 +286,7 @@ window.addEventListener("load", function() {
 
 			this.songTitleTxt.innerHTML = track.title;
 
-			this.updateTracker(this.scPlayer._playlistIndex);
+			this.updateTracker(this.scPlayer._playlistIndex + 1);
 
         },
 
@@ -291,6 +295,18 @@ window.addEventListener("load", function() {
  			var n = !n ? 0 : n;
 
             this.songTitleTracker.innerHTML = n + " / " + this.scPlayer._playlist.track_count;
+
+        },
+
+        btnMenuClickHandler: function (e) {
+
+        	e.preventDefault();
+
+        	if (!this.freeAngolaContainer.classList.contains('menu-open')) {
+        		this.freeAngolaContainer.classList.add('menu-open');
+        	} else {
+        		this.freeAngolaContainer.classList.remove('menu-open');
+        	}
 
         }
 

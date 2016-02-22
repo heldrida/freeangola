@@ -36,6 +36,7 @@ gulp.task('reload', function () {
 gulp.task('serve', ['watch'], function () {
 
 	browserSync.init({
+		notify: false,
 		server: {
 			baseDir: "./app",
 			routes: {
