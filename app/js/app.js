@@ -37,6 +37,7 @@ window.addEventListener("load", function() {
             this.pubSub = PubSub;
 
             this.songListUl = document.querySelector('.song-list');
+            this.songListUlLi = null;
 
             this.percentageBar = document.querySelector('.percentage-bar');
             this.percentageBarSpan = this.percentageBar.querySelector('span');
@@ -77,7 +78,18 @@ window.addEventListener("load", function() {
                 	console.log('ended!');
                 });
 
-                //this.scPlayer.on('timeupdate', this.scTimeUpdateHandler.bind(this));
+                this.scPlayer.on('play', function () {
+
+                	// reset first
+                	_.forEach(this.songListUlLi, function (li) {
+                		li.classList.remove('active');
+                	});
+
+					this.songListUlLi[this.scPlayer._playlistIndex].classList.add('active');
+                }.bind(this));
+
+                // set property
+                this.songListUlLi = this.songListUl.querySelectorAll('li');
 
             }.bind(this));
 

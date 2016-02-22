@@ -332,9 +332,9 @@ button {
       transition: background-color 0.2s; }
       .freeangola .song-list ul li:nth-child(odd) {
         background-color: #C32F27; }
-      .freeangola .song-list ul li:hover {
+      .freeangola .song-list ul li.active, .freeangola .song-list ul li:hover {
         background-color: #F7A438; }
-        .freeangola .song-list ul li:hover .details {
+        .freeangola .song-list ul li.active .details, .freeangola .song-list ul li:hover .details {
           color: #C32F27; }
     .freeangola .song-list .artist-poster {
       width: 150px;
