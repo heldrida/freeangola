@@ -153,7 +153,7 @@ button {
     position: fixed;
     top: 0;
     right: 0;
-    z-index: -1;
+    overflow: hidden;
     -webkit-transform: translateX(100%);
     -khtml-transform: translateX(100%);
     -moz-transform: translateX(100%);

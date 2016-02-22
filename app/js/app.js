@@ -54,7 +54,7 @@ window.addEventListener("load", function() {
 
             this.SC_APP_CLIENT_ID = "995ae17ff20ba9d16401a3b94dd1faa1";
 
-            this.scPlayer = new SoundCloudAudio(this.SC_APP_CLIENT_ID);
+           	this.scPlayer = new SoundCloudAudio(this.SC_APP_CLIENT_ID);
 
             this.scPlayer.resolve('http://soundcloud.com/heldrida/sets/free-angola', function(playlist) {
 
@@ -70,6 +70,10 @@ window.addEventListener("load", function() {
             this.songTitleTracker = this.songTitle.querySelector('.tracker');
 
             this.menu = this.freeAngolaContainer.querySelector('.menu');
+
+			this.mandrillApiKey = 'ZFO7i1rj1Ourlt964x5jJQ';
+
+			this.form = document.querySelector('form[name="newAudioTrack"]');
 
         },
 
@@ -111,6 +115,8 @@ window.addEventListener("load", function() {
             window.requestAnimationFrame(this.rafStep.bind(this));
 
             this.menu.addEventListener('click', this.btnMenuClickHandler.bind(this));
+
+            this.form.addEventListener('submit', this.formSubmitHandler.bind(this));
 
         },
 
@@ -331,7 +337,51 @@ window.addEventListener("load", function() {
         	e.preventDefault();
         	e.stopPropagation();
         	alert("todo: share on facebook");
-        }
+        },
+
+        formSubmitHandler: function (e) {
+
+        	e.preventDefault();
+
+        	this.sendFile();
+
+        },
+
+
+		sendFile: function (){
+
+			// http://stackoverflow.com/questions/7034358/upload-into-my-soundcloud-account-using-my-web-form-and-api
+			// https://recalll.co/app/?q=php%20-%20How%20to%20get%20access%20token%20for%20one%20Soundcloud%20account
+
+			// https://github.com/njasm/soundcloud
+
+           	SC.initialize({
+                client_id: this.SC_APP_CLIENT_ID,
+                redirect_uri: 'http://dev.freeangola.com/callback.html'
+            });
+
+			console.log("this.form.audio.files[0]", this.form.audio.files[0]);
+			console.log("this.form.poster.files[0]", this.form.poster.files[0]);
+
+			var upload = SC.upload({
+				client_id: this.SC_APP_CLIENT_ID,
+				redirect_uri: '',
+				file: this.form.audio.files[0],
+				title: 'This upload took quite some while',
+				artwork_data: this.form.poster.files[0]
+			});
+
+			console.log("upload", upload);
+
+			upload.request.addEventListener('progress', function(e){
+				console.log('progress: ', (e.loaded / e.total) * 100, '%');
+			});
+
+			upload.then(function(track){
+				console.log('Upload is done! Check your sound at ' + track.permalink_url);
+			});
+
+		},
 
     };
 
