@@ -69,6 +69,10 @@ window.addEventListener("load", function() {
 
                 this.scPlayer.on('ended', this.btnNextHandler.bind(this));
 
+                this.scPlayer.on('ended', function () {
+                	console.log('ended!');
+                });
+
                 this.scPlayer.on('timeupdate', this.scTimeUpdateHandler.bind(this));
 
             }.bind(this));
@@ -148,14 +152,16 @@ window.addEventListener("load", function() {
             } else if (status.toLowerCase() === "pause") {
 
                 // change state
-                this.btnPlay.setAttribute('data-status', 'pause');
+                this.btnPlay.setAttribute('data-status', 'play');
 
-                this.scPlayer.pause();
+                this.scPlayer.play({
+                	playlistIndex: this.scPlayer._playlistIndex
+                });
 
             } else {
 
                 // change state
-                this.btnPlay.setAttribute('data-status', 'stop');
+                this.btnPlay.setAttribute('data-status', 'pause');
 
                 this.scPlayer.pause();
 
@@ -181,9 +187,19 @@ window.addEventListener("load", function() {
 
         scEventHandler: function(param) {
 
+        	console.log(param);
+
             // reset bar if any play next or previous options selected
-            if (_.indexOf(["play", "next", "previous"], param) > -1) {
+            if (_.indexOf(["next", "previous"], param) > -1) {
                 TweenLite.set(this.percentageBarSpan, { css: { width: "0%" } });
+
+                // ensure that the button attribute is set correctly
+                // depending on the next/previous transition playing status
+                if (this.scPlayer.playing) {
+                	this.btnPlay.setAttribute('data-status', 'play');
+                } else {
+					this.btnPlay.setAttribute('data-status', 'stop');
+                }
             }
 
         },
