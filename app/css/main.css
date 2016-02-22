@@ -395,6 +395,9 @@ button {
         background-color: #F7A438; }
         .freeangola .song-list ul li.active .details, .freeangola .song-list ul li:hover .details {
           color: #C32F27; }
+      .freeangola .song-list ul li .artist-poster,
+      .freeangola .song-list ul li .col-r {
+        pointer-events: none; }
     .freeangola .song-list .artist-poster {
       width: 150px;
       height: 150px;

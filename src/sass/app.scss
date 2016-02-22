@@ -299,6 +299,11 @@ button {
 						color: $red;
 					}
 				}
+
+				.artist-poster,
+				.col-r {
+					pointer-events: none;
+				}
 			}
 		}
 

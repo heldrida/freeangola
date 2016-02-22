@@ -91,6 +91,10 @@ window.addEventListener("load", function() {
                 // set property
                 this.songListUlLi = this.songListUl.querySelectorAll('li');
 
+                _.forEach(this.songListUlLi, function (v, k) {
+                	this.songListUlLi[k].addEventListener('click', this.trackListItemClickHandler.bind(this));
+                }.bind(this));
+
                 // set initial tracker info
                 this.updateTracker(0);
 
@@ -307,6 +311,17 @@ window.addEventListener("load", function() {
         	} else {
         		this.freeAngolaContainer.classList.remove('menu-open');
         	}
+
+        },
+
+        trackListItemClickHandler: function (e) {
+
+        	e.preventDefault();
+
+        	var currentTarget = e.target;
+        	var index = [].indexOf.call (currentTarget.parentNode.children, currentTarget);
+
+        	this.scPlayer.play({ playlistIndex: index });
 
         }
 
