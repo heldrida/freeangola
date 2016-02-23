@@ -169,6 +169,20 @@ button {
       top: 0;
       left: 0px;
       box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.4); }
+    .freeangola .sidebar .txt-content {
+      width: auto;
+      margin: 25px;
+      margin-bottom: 50px; }
+      .freeangola .sidebar .txt-content h3, .freeangola .sidebar .txt-content p {
+        margin-bottom: 25px; }
+      .freeangola .sidebar .txt-content h3 {
+        line-height: 40px;
+        font-size: 24px;
+        letter-spacing: 2px; }
+      .freeangola .sidebar .txt-content p {
+        line-height: 28px;
+        font-size: 18px;
+        letter-spacing: 2px; }
   .freeangola.menu-open header .menu {
     -webkit-transform: rotate(90deg);
     -khtml-transform: rotate(90deg);

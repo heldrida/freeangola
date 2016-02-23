@@ -44,6 +44,28 @@ button {
 			left: 0px;
 			box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.4);
 		}
+
+		.txt-content {
+			width: auto;
+			margin: $common-margin-lr;
+			margin-bottom: 50px;
+
+			h3, p {
+				margin-bottom: $common-margin-lr;
+			}
+
+			h3 {
+				line-height: 40px;
+				font-size: 24px;
+				letter-spacing: 2px;
+			}
+
+			p {
+				line-height: 28px;
+				font-size: 18px;
+				letter-spacing: 2px;
+			}
+		}
 	}
 
 	&.menu-open {
