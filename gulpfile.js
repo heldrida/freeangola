@@ -15,14 +15,14 @@ gulp.task('sass', function () {
     return gulp.src('./src/sass/main.scss')
            .pipe(plumber())
            .pipe(sass())
-           .pipe(gulp.dest('./app/css'));
+           .pipe(gulp.dest('./app/css'))
+           .pipe(browserSync.stream());
 });
 
 // Watch
 gulp.task('watch', function () {
 
 	gulp.watch('./src/sass/**/*.scss', ['sass']);
-	gulp.watch('./app/css/*.css', ['reload']);
 	gulp.watch("./app/index.html", ['reload']);
 	gulp.watch("./app/js/**/*.js", ['reload']);
 
