@@ -405,7 +405,8 @@ window.addEventListener("load", function() {
         },
 
 		formFileHandler: function (e) {
-
+			//https://www.new-bamboo.co.uk/blog/2012/01/10/ridiculously-simple-ajax-uploads-with-formdata/
+			//
 			e.preventDefault();
 
 			var inputFile = e.target.parentNode.querySelector("input[type=\"file\"]");
