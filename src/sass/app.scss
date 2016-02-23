@@ -498,8 +498,8 @@ form {
 	}
 
 	.submit {
-		span {
-			line-height: $common-height;
+		button {
+			line-height: normal;
 			display: block;
 			border-radius: $border-radius;
 			width: 100%;
@@ -508,6 +508,10 @@ form {
 			border: 4px solid #000;
 			text-align: center;
 			color: $yellow-gold;
+			background: #000;
+			font-size: 16px;
+			font-family: 'Roboto Slab', serif;
+			letter-spacing: 2px;
 		}
 	}
 }
