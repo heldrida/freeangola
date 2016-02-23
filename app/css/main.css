@@ -191,7 +191,9 @@ button {
     -ms-transform: translateX(20%);
     -o-transform: translateX(20%);
     transform: translateX(20%); }
-  .freeangola header, .freeangola main, .freeangola .sidebar {
+  .freeangola header,
+  .freeangola main,
+  .freeangola .sidebar {
     -webkit-transition: transform 0.3s;
     -khtml-transition: transform 0.3s;
     -moz-transition: transform 0.3s;
@@ -420,6 +422,8 @@ button {
       .freeangola .song-list ul li .artist-poster,
       .freeangola .song-list ul li .col-r {
         pointer-events: none; }
+      .freeangola .song-list ul li .wrp {
+        max-width: 768px; }
     .freeangola .song-list .artist-poster {
       width: 150px;
       height: 150px;

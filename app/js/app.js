@@ -26,7 +26,7 @@ window.addEventListener("load", function() {
 
             this.setEventListeners();
 
-	        this.setPlayNextPrevControllerVsibility();
+            this.setPlayNextPrevControllerVsibility();
 
         },
 
@@ -54,7 +54,7 @@ window.addEventListener("load", function() {
 
             this.SC_APP_CLIENT_ID = "995ae17ff20ba9d16401a3b94dd1faa1";
 
-           	this.scPlayer = new SoundCloudAudio(this.SC_APP_CLIENT_ID);
+            this.scPlayer = new SoundCloudAudio(this.SC_APP_CLIENT_ID);
 
             this.scPlayer.resolve('http://soundcloud.com/heldrida/sets/free-angola', function(playlist) {
 
@@ -71,9 +71,9 @@ window.addEventListener("load", function() {
 
             this.menu = this.freeAngolaContainer.querySelector('.menu');
 
-			this.mandrillApiKey = 'ZFO7i1rj1Ourlt964x5jJQ';
+            this.mandrillApiKey = 'ZFO7i1rj1Ourlt964x5jJQ';
 
-			this.form = document.querySelector('form[name="newAudioTrack"]');
+            this.form = document.querySelector('form[name="newAudioTrack"]');
 
         },
 
@@ -86,8 +86,8 @@ window.addEventListener("load", function() {
 
                 this.scPlayer.on('ended', this.btnNextHandler.bind(this));
 
-                this.scPlayer.on('ended', function () {
-                	console.log('ended!');
+                this.scPlayer.on('ended', function() {
+                    console.log('ended!');
                 });
 
                 this.scPlayer.on('play', this.playCallHandler.bind(this));
@@ -95,10 +95,10 @@ window.addEventListener("load", function() {
                 // set property
                 this.songListUlLi = this.songListUl.querySelectorAll('li');
 
-                _.forEach(this.songListUlLi, function (v, k) {
-                	this.songListUlLi[k].addEventListener('click', this.trackListItemClickHandler.bind(this));
+                _.forEach(this.songListUlLi, function(v, k) {
+                    this.songListUlLi[k].addEventListener('click', this.trackListItemClickHandler.bind(this));
 
-                	this.songListUlLi[k].querySelector('.like').addEventListener('click', this.likeBtnClickHandler.bind(this));
+                    this.songListUlLi[k].querySelector('.like').addEventListener('click', this.likeBtnClickHandler.bind(this));
                 }.bind(this));
 
                 // set initial tracker info
@@ -190,7 +190,7 @@ window.addEventListener("load", function() {
                 this.btnPlay.setAttribute('data-status', 'play');
 
                 this.scPlayer.play({
-                	playlistIndex: this.scPlayer._playlistIndex
+                    playlistIndex: this.scPlayer._playlistIndex
                 });
 
             } else {
@@ -222,19 +222,19 @@ window.addEventListener("load", function() {
 
         scEventHandler: function(param) {
 
-        	console.log(param);
+            console.log(param);
 
             // reset bar if any play next or previous options selected
             if (_.indexOf(["next", "previous"], param) > -1) {
                 //TweenLite.set(this.percentageBarSpan, { css: { width: "0%" } });
-				this.percentageBarSpan.style.width = (0 + "%");
+                this.percentageBarSpan.style.width = (0 + "%");
 
                 // ensure that the button attribute is set correctly
                 // depending on the next/previous transition playing status
                 if (this.scPlayer.playing) {
-                	this.btnPlay.setAttribute('data-status', 'play');
+                    this.btnPlay.setAttribute('data-status', 'play');
                 } else {
-					this.btnPlay.setAttribute('data-status', 'stop');
+                    this.btnPlay.setAttribute('data-status', 'stop');
                 }
             }
 
@@ -246,142 +246,145 @@ window.addEventListener("load", function() {
             var currentTime = this.scPlayer.audio.currentTime;
             var duration = this.scPlayer.audio.duration;
             var p = this.songPercentage(duration, currentTime);
-        	this.percentageBarSpan.style.width = (p * 100 + "%");
+            this.percentageBarSpan.style.width = (p * 100 + "%");
         },
 
-        setPlayNextPrevControllerVsibility: function () {
+        setPlayNextPrevControllerVsibility: function() {
 
-        	if (!this.scPlayer._playlistIndex) {
-        		TweenLite.to(this.btnPrevious, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
-        		return null;
-        	}
+            if (!this.scPlayer._playlistIndex) {
+                TweenLite.to(this.btnPrevious, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
+                return null;
+            }
 
             // hide button next if current index equals or bigger then length of tracks
             if (this.scPlayer._playlistIndex >= this.scPlayer._playlist.tracks.length - 1) {
-            	TweenLite.to(this.btnNext, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
+                TweenLite.to(this.btnNext, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
             } else {
-            	TweenLite.to(this.btnNext, 0.2, { css: { opacity: 1 } });
+                TweenLite.to(this.btnNext, 0.2, { css: { opacity: 1 } });
             }
 
             // hide button previous if current index is first
             if (!this.scPlayer._playlistIndex || this.scPlayer._playlistIndex === 0) {
-            	TweenLite.to(this.btnPrevious, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
+                TweenLite.to(this.btnPrevious, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
             } else {
-            	TweenLite.to(this.btnPrevious, 0.2, { css: { opacity: 1 } });
+                TweenLite.to(this.btnPrevious, 0.2, { css: { opacity: 1 } });
             }
 
         },
 
-        rafStep: function () {
+        rafStep: function() {
 
-        	this.scTimeUpdateHandler.call(this);
-        	window.requestAnimationFrame(this.rafStep.bind(this));
-
-        },
-
-        playCallHandler: function () {
-
-			// reset first
-			_.forEach(this.songListUlLi, function (li) {
-				li.classList.remove('active');
-			});
-
-			this.songListUlLi[this.scPlayer._playlistIndex].classList.add('active');
-
-			this.setCurrentSongMetadata();
+            this.scTimeUpdateHandler.call(this);
+            window.requestAnimationFrame(this.rafStep.bind(this));
 
         },
 
-        setCurrentSongMetadata: function () {
+        playCallHandler: function() {
 
-			var track = this.scPlayer._playlist.tracks[this.scPlayer._playlistIndex ? this.scPlayer._playlistIndex : 0];
+            // reset first
+            _.forEach(this.songListUlLi, function(li) {
+                li.classList.remove('active');
+            });
 
-			this.songTitleTxt.innerHTML = track.title;
+            this.songListUlLi[this.scPlayer._playlistIndex].classList.add('active');
 
-			this.updateTracker(this.scPlayer._playlistIndex + 1);
-
-        },
-
-        updateTracker: function (n) {
-
- 			var n = !n ? 0 : n;
-
-            this.songTitleTracker.innerHTML = n + " / " + this.scPlayer._playlist.track_count;
+            this.setCurrentSongMetadata();
 
         },
 
-        btnMenuClickHandler: function (e) {
+        setCurrentSongMetadata: function() {
 
-        	e.preventDefault();
+            var track = this.scPlayer._playlist.tracks[this.scPlayer._playlistIndex ? this.scPlayer._playlistIndex : 0];
 
-        	if (!this.freeAngolaContainer.classList.contains('menu-open')) {
-        		this.freeAngolaContainer.classList.add('menu-open');
-        	} else {
-        		this.freeAngolaContainer.classList.remove('menu-open');
-        	}
+            this.songTitleTxt.innerHTML = track.title;
+
+            this.updateTracker(this.scPlayer._playlistIndex + 1);
 
         },
 
-        trackListItemClickHandler: function (e) {
+        updateTracker: function(n) {
 
-        	e.preventDefault();
+            var n = !n ? 0 : n;
 
-        	var currentTarget = e.target;
-        	var index = [].indexOf.call (currentTarget.parentNode.children, currentTarget);
-
-        	this.scPlayer.play({ playlistIndex: index });
-
-        },
-
-        likeBtnClickHandler: function (e) {
-        	e.preventDefault();
-        	e.stopPropagation();
-        	alert("todo: share on facebook");
-        },
-
-        formSubmitHandler: function (e) {
-
-        	e.preventDefault();
-
-        	this.sendFile();
+            if (this.scPlayer._playlist && this.scPlayer._playlist.track_count) {
+                this.songTitleTracker.innerHTML = n + " / " + this.scPlayer._playlist.track_count;
+            }
 
         },
 
+        btnMenuClickHandler: function(e) {
 
-		sendFile: function (){
+            e.preventDefault();
 
-			// http://stackoverflow.com/questions/7034358/upload-into-my-soundcloud-account-using-my-web-form-and-api
-			// https://recalll.co/app/?q=php%20-%20How%20to%20get%20access%20token%20for%20one%20Soundcloud%20account
+            if (!this.freeAngolaContainer.classList.contains('menu-open')) {
+                this.freeAngolaContainer.classList.add('menu-open');
+            } else {
+                this.freeAngolaContainer.classList.remove('menu-open');
+            }
 
-			// https://github.com/njasm/soundcloud
+        },
 
-           	SC.initialize({
+        trackListItemClickHandler: function(e) {
+
+            e.preventDefault();
+
+            var currentTarget = e.target;
+            var index = [].indexOf.call(currentTarget.parentNode.children, currentTarget);
+
+            this.scPlayer.play({ playlistIndex: index });
+
+        },
+
+        likeBtnClickHandler: function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            alert("todo: share on facebook");
+        },
+
+        formSubmitHandler: function(e) {
+
+            e.preventDefault();
+
+            this.sendFile();
+
+        },
+
+
+        sendFile: function() {
+
+            // http://stackoverflow.com/questions/7034358/upload-into-my-soundcloud-account-using-my-web-form-and-api
+            // https://recalll.co/app/?q=php%20-%20How%20to%20get%20access%20token%20for%20one%20Soundcloud%20account
+
+            // https://github.com/njasm/soundcloud
+
+            SC.initialize({
+                oauth_token: "1-180763-2575422-dc0171da39de6de",
                 client_id: this.SC_APP_CLIENT_ID,
                 redirect_uri: 'http://dev.freeangola.com/callback.html'
             });
 
-			console.log("this.form.audio.files[0]", this.form.audio.files[0]);
-			console.log("this.form.poster.files[0]", this.form.poster.files[0]);
+            console.log("this.form.audio.files[0]", this.form.audio.files[0]);
+            console.log("this.form.poster.files[0]", this.form.poster.files[0]);
 
-			var upload = SC.upload({
-				client_id: this.SC_APP_CLIENT_ID,
-				redirect_uri: '',
-				file: this.form.audio.files[0],
-				title: 'This upload took quite some while',
-				artwork_data: this.form.poster.files[0]
-			});
+            var upload = SC.upload({
+                oauth_token: "1-180763-2575422-0fba91d76667921",
+                asset_data: this.form.audio.files[0],
+                title: 'This upload took quite some while',
+                artwork_data: this.form.poster.files[0]
+            });
 
-			console.log("upload", upload);
+            console.log("upload", upload);
 
-			upload.request.addEventListener('progress', function(e){
-				console.log('progress: ', (e.loaded / e.total) * 100, '%');
-			});
+            upload.request.addEventListener('progress', function(e) {
+                console.log(e);
+                //console.log('progress: ', (e.loaded / e.total) * 100, '%');
+            });
 
-			upload.then(function(track){
-				console.log('Upload is done! Check your sound at ' + track.permalink_url);
-			});
+            upload.then(function(track) {
+                console.log('Upload is done! Check your sound at ' + track.permalink_url);
+            });
 
-		},
+        },
 
     };
 
