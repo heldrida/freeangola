@@ -146,6 +146,14 @@ button {
   width: 100%;
   margin: 0 auto;
   font-family: 'Roboto Slab', serif; }
+  .freeangola .main-content {
+    overflow: hidden;
+    -webkit-transform: translateX(0%);
+    -khtml-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
   .freeangola .sidebar {
     background-color: #C32F27;
     height: 100vh;
@@ -159,54 +167,67 @@ button {
     -moz-transform: translateX(100%);
     -ms-transform: translateX(100%);
     -o-transform: translateX(100%);
-    transform: translateX(100%); }
-    .freeangola .sidebar:before {
-      content: " ";
-      width: 2px;
-      height: 100%;
-      background-color: #000;
-      position: absolute;
-      top: 0;
-      left: 0px;
-      box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.4); }
+    transform: translateX(100%);
+    /*
+		&:before {
+			content: " ";
+			width: 2px;
+			height: 100%;
+			background-color: #000;
+			position: absolute;
+			top: 0;
+			left: 0px;
+			box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.4);
+		}
+		*/ }
     .freeangola .sidebar .txt-content {
       width: auto;
       margin: 25px;
-      margin-bottom: 50px; }
+      margin-bottom: 100px; }
       .freeangola .sidebar .txt-content h3, .freeangola .sidebar .txt-content p {
         margin-bottom: 25px; }
       .freeangola .sidebar .txt-content h3 {
         line-height: 40px;
-        font-size: 24px;
+        font-size: 32px;
         letter-spacing: 2px; }
       .freeangola .sidebar .txt-content p {
         line-height: 28px;
         font-size: 18px;
         letter-spacing: 2px; }
-  .freeangola.menu-open header .menu {
-    -webkit-transform: rotate(90deg);
-    -khtml-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    transform: rotate(90deg); }
-  .freeangola.menu-open header,
-  .freeangola.menu-open main {
-    -webkit-transform: translateX(-80%);
-    -khtml-transform: translateX(-80%);
-    -moz-transform: translateX(-80%);
-    -ms-transform: translateX(-80%);
-    -o-transform: translateX(-80%);
-    transform: translateX(-80%); }
-  .freeangola.menu-open .sidebar {
-    -webkit-transform: translateX(0%);
-    -khtml-transform: translateX(0%);
-    -moz-transform: translateX(0%);
-    -ms-transform: translateX(0%);
-    -o-transform: translateX(0%);
-    transform: translateX(0%); }
-  .freeangola header,
-  .freeangola main,
+  .freeangola.menu-open {
+    overflow: hidden; }
+    .freeangola.menu-open header .menu {
+      -webkit-transform: rotate(90deg);
+      -khtml-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      transform: rotate(90deg); }
+    .freeangola.menu-open .main-content {
+      -webkit-transform: translateX(-80%);
+      -khtml-transform: translateX(-80%);
+      -moz-transform: translateX(-80%);
+      -ms-transform: translateX(-80%);
+      -o-transform: translateX(-80%);
+      transform: translateX(-80%); }
+      .freeangola.menu-open .main-content:before {
+        content: " ";
+        width: 3px;
+        height: 100%;
+        background-color: #000;
+        position: absolute;
+        top: 0;
+        right: -1px;
+        z-index: 1000; }
+    .freeangola.menu-open .sidebar {
+      overflow-y: visible;
+      -webkit-transform: translateX(0%);
+      -khtml-transform: translateX(0%);
+      -moz-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+      -o-transform: translateX(0%);
+      transform: translateX(0%); }
+  .freeangola .main-content,
   .freeangola .sidebar {
     -webkit-transition: transform 0.3s;
     -khtml-transition: transform 0.3s;
@@ -515,7 +536,8 @@ form {
   width: auto;
   margin-top: 25px;
   margin-left: 30px;
-  margin-right: 30px; }
+  margin-right: 30px;
+  margin-bottom: 100px; }
   form * {
     box-sizing: border-box; }
   form input {
