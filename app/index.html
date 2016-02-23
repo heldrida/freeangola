@@ -45,10 +45,29 @@
         </main>
         <div class="sidebar">
             <form name="newAudioTrack" id="the-form" action="" enctype="multipart/form-data">
-                <input name="audio" type="file">
-                <input name="poster" type="file">
-                <input type="submit" value="Upload" />
+                <div class="usr-text">
+    	            <span class="title">Nome</span>
+					<input name="artist" type="text" placeholder="Artista...">
+                </div>
+                <div class="usr-text">
+	                <span class="title">Titulo</span>
+					<input name="song-title" type="text" placeholder="Titulo...">
+                </div>
+                <div class="file audio">
+					<input name="audio" type="file">
+					<span class="title">Mp3</span>
+                    <span class="info">Inserir ficheiro audio...</span>
+                </div>
+                <div class="file poster">
+					<input name="poster" type="file">
+					<span class="title">Poster</span>
+                    <span class="info">Inserir ficheiro imagem...</span>
+                </div>
+                <div class="submit">
+					<span>Enviar</span>
+                </div>
             </form>
+
         </div>
         <footer>
         </footer>
