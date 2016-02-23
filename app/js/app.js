@@ -77,12 +77,20 @@ window.addEventListener("load", function() {
 
             this.formInputFileCollection = this.form.querySelectorAll('div.file input[type="text"]');
 
+            this.tracksLoadedEvCalled = false;
+
         },
 
         setEventListeners: function() {
 
             // wait till the tracks are available
             this.pubSub.subscribe("/app/events/soundcloud/loaded_tracks", function(playlist) {
+
+                if (this.tracksLoadedEvCalled) {
+                    return null;
+                } else {
+                    this.tracksLoadedEvCalled = true;
+                }
 
                 this.compileTemplates.call(this, { playlist: playlist });
 
@@ -120,9 +128,11 @@ window.addEventListener("load", function() {
 
             this.form.addEventListener('submit', this.formSubmitHandler.bind(this));
 
-            _.forEach(this.formInputFileCollection, function (v, k) {
-	            this.formInputFileCollection[k].addEventListener("click", this.formFileHandler.bind(this));
+            _.forEach(this.formInputFileCollection, function(v, k) {
+                this.formInputFileCollection[k].addEventListener("click", this.formFileHandler.bind(this));
             }.bind(this));
+
+            this.pubSub.subscribe("/app/events/soundcloud/upload_finished", this.uploadFinishedHandler.bind(this));
 
         },
 
@@ -377,7 +387,7 @@ window.addEventListener("load", function() {
             var upload = SC.upload({
                 asset_data: this.form.audio.files[0],
                 title: 'This upload took quite some while',
-                artwork_data: this.form.poster.files[0]
+                artwork_data: this.form.poster.files[0] ? this.form.poster.files[0] : ""
             });
 
             upload.request.addEventListener('progress', function(e) {
@@ -386,7 +396,7 @@ window.addEventListener("load", function() {
             });
 
             upload.then(function(track) {
-                console.log('Upload is done! Check your sound at ' + track.permalink_url);
+                this.pubSub.publish("/app/events/soundcloud/upload_finished", track.permalink_url);
             });
 
         },
@@ -404,31 +414,37 @@ window.addEventListener("load", function() {
             xmlhttp.send();
         },
 
-		formFileHandler: function (e) {
-			//https://www.new-bamboo.co.uk/blog/2012/01/10/ridiculously-simple-ajax-uploads-with-formdata/
-			//
-			e.preventDefault();
+        formFileHandler: function(e) {
+            //https://www.new-bamboo.co.uk/blog/2012/01/10/ridiculously-simple-ajax-uploads-with-formdata/
+            //
+            e.preventDefault();
 
-			var inputFile = e.target.parentNode.querySelector("input[type=\"file\"]");
-			var inputTxt = e.target.parentNode.querySelector("input[type=\"text\"]");
+            var inputFile = e.target.parentNode.querySelector("input[type=\"file\"]");
+            var inputTxt = e.target.parentNode.querySelector("input[type=\"text\"]");
 
-			console.log("e.target", e.target);
-			console.log("inputFile", inputFile);
-			console.log("inputTxt", inputTxt);
+            console.log("e.target", e.target);
+            console.log("inputFile", inputFile);
+            console.log("inputTxt", inputTxt);
 
-			inputFile.addEventListener("change", function () {
-				/*
-				if (inputFile.files[0].type !== "audio/mp3") {
-					console.log("not mp3 file");
-				} else {
-					inputTxt.innerHTML = inputFile.files[0].name;
-				}*/
-				inputTxt.value = inputFile.files[0].name;
-			});
+            inputFile.addEventListener("change", function() {
+                /*
+                if (inputFile.files[0].type !== "audio/mp3") {
+                    console.log("not mp3 file");
+                } else {
+                    inputTxt.innerHTML = inputFile.files[0].name;
+                }*/
+                inputTxt.value = inputFile.files[0].name;
+            });
 
-			inputFile.click();
+            inputFile.click();
 
-		}
+        },
+
+        uploadFinishedHandler: function(permalink_url) {
+
+            console.log("permalink_url", permalink_url);
+
+        }
 
     };
 
