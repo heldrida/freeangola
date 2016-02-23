@@ -1,4 +1,14 @@
 <?php
+	
+	if (stripos($_SERVER["HTTP_HOST"], "freeangola")) {
+
+		header("Access-Control-Allow-Origin: http://freeangola.com");
+
+	} else {
+	
+		header("Access-Control-Allow-Origin: *");
+
+	}
 
 	require("credentials.php");
 	require("Services/Soundcloud.php");

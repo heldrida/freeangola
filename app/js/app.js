@@ -345,12 +345,14 @@ window.addEventListener("load", function() {
 
             e.preventDefault();
 
-            this.sendFile();
+            this.callAjax("http://localhost:8888/freeangola/app/auth/request_token.php", this.sendFile.bind(this));
 
         },
 
 
-        sendFile: function() {
+        sendFile: function(data) {
+
+            data = JSON.parse(data);
 
             // http://stackoverflow.com/questions/7034358/upload-into-my-soundcloud-account-using-my-web-form-and-api
             // https://recalll.co/app/?q=php%20-%20How%20to%20get%20access%20token%20for%20one%20Soundcloud%20account
@@ -358,7 +360,7 @@ window.addEventListener("load", function() {
             // https://github.com/njasm/soundcloud
 
             SC.initialize({
-                oauth_token: "1-180763-2575422-dc0171da39de6de",
+                oauth_token: data.access_token,
                 client_id: this.SC_APP_CLIENT_ID,
                 redirect_uri: 'http://dev.freeangola.com/callback.html'
             });
@@ -367,13 +369,10 @@ window.addEventListener("load", function() {
             console.log("this.form.poster.files[0]", this.form.poster.files[0]);
 
             var upload = SC.upload({
-                oauth_token: "1-180763-2575422-0fba91d76667921",
                 asset_data: this.form.audio.files[0],
                 title: 'This upload took quite some while',
                 artwork_data: this.form.poster.files[0]
             });
-
-            console.log("upload", upload);
 
             upload.request.addEventListener('progress', function(e) {
                 console.log(e);
@@ -385,6 +384,19 @@ window.addEventListener("load", function() {
             });
 
         },
+
+        callAjax: function(url, callback) {
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    callback(xmlhttp.responseText);
+                }
+            };
+
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }
 
     };
 
