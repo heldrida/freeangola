@@ -519,23 +519,34 @@ form {
     letter-spacing: 2px;
     line-height: 60px !important; }
     form span.title {
+      border-radius: 5px;
       text-align: center !important;
-      text-indent: 0 !important; }
-  form .usr-text {
+      text-indent: 0 !important;
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important; }
+    form span.info {
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important; }
+  form .usr-text,
+  form .file {
     width: 100%;
     height: 60px;
     margin-bottom: 25px; }
-    form .usr-text input, form .usr-text span {
+    form .usr-text input, form .usr-text span,
+    form .file input,
+    form .file span {
       float: left;
       display: block; }
-    form .usr-text span {
+    form .usr-text span,
+    form .file span {
       width: 85px;
       height: 60px;
       text-indent: 25px;
       line-height: 60px;
       color: #F7A438;
       background: #000; }
-    form .usr-text input {
+    form .usr-text input,
+    form .file input {
       width: calc(100% - 85px);
       height: 60px;
       line-height: 60px;
@@ -546,36 +557,14 @@ form {
       text-align: left;
       border: 4px solid #000;
       overflow: hidden;
-      border-radius: 5px; }
-  form .file {
-    width: 100%;
-    height: 60px;
-    display: block;
-    clear: both;
-    margin-bottom: 25px;
-    border: 4px solid #000;
-    border-radius: 5px;
-    overflow: hidden; }
-    form .file span {
-      color: #000;
-      display: block;
-      height: 100%;
-      float: left;
-      background: #000;
-      line-height: 60px;
-      text-indent: 25px; }
-      form .file span.title {
-        width: 85px;
-        text-indent: 25px;
-        line-height: 60px;
-        color: #F7A438; }
-      form .file span.info {
-        color: #000;
-        background: #F7A438;
-        width: calc(100% - 85px); }
-    form .file input {
+      border-radius: 5px;
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important; }
+    form .usr-text input[type="file"],
+    form .file input[type="file"] {
       position: absolute;
-      opacity: 0; }
+      z-index: -9999;
+      visibility: hidden; }
   form .submit span {
     line-height: 60px;
     display: block;

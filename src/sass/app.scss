@@ -404,6 +404,7 @@ button {
 
 // form
 form {
+	$border-radius: 5px;
 	$common-height: 60px;
 	width: auto;
 	margin-top: $common-margin-lr;
@@ -440,21 +441,21 @@ form {
 		line-height: $common-height !important;
 
 		&.title {
+			border-radius: $border-radius;
 			text-align: center !important;
 			text-indent: 0 !important;
-			//border-radius-top-right: 0 !important;
-			//border-radius-bottom-right: 0 !important;
-
+			border-top-right-radius: 0 !important;
+			border-bottom-right-radius: 0 !important;
 		}
 
 		&.info {
-			//border-radius-top-left: 0 !important;
-			//border-radius-bottom-left: 0 !important;
-
+			border-top-left-radius: 0 !important;
+			border-bottom-left-radius: 0 !important;
 		}
 	}
 
-	.usr-text {
+	.usr-text,
+	.file {
 		width: 100%;
 		height: $common-height;
 		margin-bottom: $common-margin-lr;
@@ -484,46 +485,15 @@ form {
 			text-align: left;
 			border: 4px solid #000;
 			overflow: hidden;
-			border-radius: 5px;
-		}
-	}
-
-	.file {
-		width: 100%;
-		height: $common-height;
-		display: block;
-		clear: both;
-		margin-bottom: $common-margin-lr;
-		border: 4px solid #000;
-		border-radius: 5px;
-		overflow: hidden;
-
-		span {
-			color: #000;
-			display: block;
-			height: 100%;
-			float: left;
-			background: #000;
-			line-height: $common-height;
-			text-indent: $common-margin-lr;
-
-			&.title {
-				width: 85px;
-				text-indent: $common-margin-lr;
-				line-height: $common-height;
-				color: $yellow-gold;
-			}
-
-			&.info {
-				color: #000;
-				background: $yellow-gold;
-				width: calc(100% - 85px);
-			}
+			border-radius: $border-radius;
+			border-top-left-radius: 0 !important;
+			border-bottom-left-radius: 0 !important;
 		}
 
-		input {
+		input[type="file"] {
 			position: absolute;
-			opacity: 0;
+			z-index: -9999;
+			visibility: hidden;
 		}
 	}
 
@@ -531,7 +501,7 @@ form {
 		span {
 			line-height: $common-height;
 			display: block;
-			border-radius: 5px;
+			border-radius: $border-radius;
 			width: 100%;
 			height: $common-height;
 			background: #000;
