@@ -75,6 +75,8 @@ window.addEventListener("load", function() {
 
             this.form = document.querySelector('form[name="newAudioTrack"]');
 
+            this.formInputFileCollection = this.form.querySelectorAll('div.file input[type="text"]');
+
         },
 
         setEventListeners: function() {
@@ -117,6 +119,10 @@ window.addEventListener("load", function() {
             this.menu.addEventListener('click', this.btnMenuClickHandler.bind(this));
 
             this.form.addEventListener('submit', this.formSubmitHandler.bind(this));
+
+            _.forEach(this.formInputFileCollection, function (v, k) {
+	            this.formInputFileCollection[k].addEventListener("click", this.formFileHandler.bind(this));
+            }.bind(this));
 
         },
 
@@ -396,7 +402,32 @@ window.addEventListener("load", function() {
 
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
-        }
+        },
+
+		formFileHandler: function (e) {
+
+			e.preventDefault();
+
+			var inputFile = e.target.parentNode.querySelector("input[type=\"file\"]");
+			var inputTxt = e.target.parentNode.querySelector("input[type=\"text\"]");
+
+			console.log("e.target", e.target);
+			console.log("inputFile", inputFile);
+			console.log("inputTxt", inputTxt);
+
+			inputFile.addEventListener("change", function () {
+				/*
+				if (inputFile.files[0].type !== "audio/mp3") {
+					console.log("not mp3 file");
+				} else {
+					inputTxt.innerHTML = inputFile.files[0].name;
+				}*/
+				inputTxt.value = inputFile.files[0].name;
+			});
+
+			inputFile.click();
+
+		}
 
     };
 
