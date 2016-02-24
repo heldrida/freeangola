@@ -513,7 +513,7 @@ form {
             width: 100%;
             position: relative;
             color: $yellow-gold;
-            
+
             a {
                 color: inherit;
             }
@@ -533,7 +533,7 @@ form {
                 width: 30px;
                 height: 30px;
                 position: relative;
-                top: -2px;
+                top: -4px;
             }
             &:after {
                 content: " ";
@@ -543,8 +543,8 @@ form {
                 background-size: contain;
                 display: inline-block;
                 position: absolute;
-                top: 0;
-                left: 10px;
+                top: -8px;
+                left: 8px;
                 width: 30px;
                 height: 30px;
                 display: none;

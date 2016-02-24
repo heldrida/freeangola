@@ -655,7 +655,7 @@ form {
         width: 30px;
         height: 30px;
         position: relative;
-        top: -2px; }
+        top: -4px; }
       form .usr-terms label:after {
         content: " ";
         background-image: url(../img/check-symbol.svg?201602240035);
@@ -664,8 +664,8 @@ form {
         background-size: contain;
         display: inline-block;
         position: absolute;
-        top: 0;
-        left: 10px;
+        top: -8px;
+        left: 8px;
         width: 30px;
         height: 30px;
         display: none; }
