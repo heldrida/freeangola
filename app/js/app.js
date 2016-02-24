@@ -79,6 +79,8 @@ window.addEventListener("load", function() {
 
             this.tracksLoadedEvCalled = false;
 
+            this.termsConditionsCheckbox = this.form.querySelector('.usr-terms label');
+
         },
 
         setEventListeners: function() {
@@ -135,6 +137,8 @@ window.addEventListener("load", function() {
             this.pubSub.subscribe("/app/events/soundcloud/upload_finished", this.uploadFinishedHandler.bind(this));
 
             this.form.song_title.addEventListener("keyup", this.validateForm.bind(this));
+
+            this.termsConditionsCheckbox.addEventListener("click", this.termsConditionsCheckboxHandler.bind(this));
 
         },
 
@@ -451,11 +455,9 @@ window.addEventListener("load", function() {
 
         validateForm: function() {
 
-            console.log("this.form.song_title.value.length", this.form.song_title.value.length);
-            console.log("this.form.audio.lenght === 1", this.form.audio.files.length);
-            console.log('this.form.audio.type === "audio/mp3"', this.form.audio.files[0].type);
+            console.log("this.form.terms_and_conditions.checked", this.form.terms_and_conditions.checked);
 
-            if (this.form.song_title.value.length > 0 && this.form.audio.files && this.form.audio.files.length === 1 && this.form.audio.files[0].type === "audio/mp3") {
+            if (this.form.terms_and_conditions.checked && this.form.song_title.value.length > 0 && this.form.audio.files && this.form.audio.files.length === 1 && this.form.audio.files[0].type === "audio/mp3") {
 
                 this.form.classList.add("valid");
                 TweenLite.to(this.form.submit, 0.3, {
@@ -482,6 +484,22 @@ window.addEventListener("load", function() {
                 });
 
             }
+
+        },
+
+        termsConditionsCheckboxHandler: function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+
+            if (!this.termsConditionsCheckbox.classList.contains('checked')) {
+                this.termsConditionsCheckbox.classList.add('checked');
+                this.form.terms_and_conditions.checked = true;
+            } else {
+                this.termsConditionsCheckbox.classList.remove('checked');
+                this.form.terms_and_conditions.checked = false;
+            }
+
+            this.validateForm();
 
         }
 

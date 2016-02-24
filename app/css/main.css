@@ -617,6 +617,51 @@ form {
     font-size: 16px;
     font-family: 'Roboto Slab', serif;
     letter-spacing: 2px; }
+  form .usr-terms {
+    margin-bottom: 25px; }
+    form .usr-terms input {
+      position: absolute;
+      opacity: 0;
+      display: inline-block;
+      height: 30px;
+      z-index: -999; }
+    form .usr-terms label {
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      width: 100%;
+      position: relative; }
+      form .usr-terms label a {
+        color: inherit; }
+      form .usr-terms label span {
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        line-height: 30px !important;
+        position: absolute;
+        padding-left: 15px; }
+      form .usr-terms label:before {
+        content: " ";
+        border: 2px solid #000;
+        border-radius: 10px;
+        display: inline-block;
+        width: 30px;
+        height: 30px; }
+      form .usr-terms label:after {
+        content: " ";
+        background-image: url(../img/check-symbol.svg?201602240035);
+        background-repeat: no-repeat;
+        background-position: top left;
+        background-size: contain;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 10px;
+        width: 30px;
+        height: 30px;
+        display: none; }
+      form .usr-terms label.checked:after {
+        display: block; }
 
 @media only screen and (min-device-width: 1024px) {
   .freeangola main > .column {
