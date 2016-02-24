@@ -183,7 +183,7 @@ button {
     .freeangola .sidebar .txt-content {
       width: auto;
       margin: 25px;
-      margin-bottom: 100px; }
+      margin-bottom: 50px; }
       .freeangola .sidebar .txt-content h3,
       .freeangola .sidebar .txt-content p {
         margin-bottom: 25px; }
@@ -195,6 +195,12 @@ button {
         line-height: 28px;
         font-size: 18px;
         letter-spacing: 2px; }
+      .freeangola .sidebar .txt-content.note {
+        color: #F7A438;
+        box-sizing: border-box;
+        border: 1px solid #F7A438;
+        padding: 20px;
+        border-radius: 10px; }
   .freeangola.menu-open {
     overflow: hidden; }
     .freeangola.menu-open header .menu {
