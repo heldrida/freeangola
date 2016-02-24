@@ -636,7 +636,8 @@ form {
       height: 30px;
       line-height: 30px;
       width: 100%;
-      position: relative; }
+      position: relative;
+      color: #F7A438; }
       form .usr-terms label a {
         color: inherit; }
       form .usr-terms label span {
@@ -652,7 +653,9 @@ form {
         border-radius: 10px;
         display: inline-block;
         width: 30px;
-        height: 30px; }
+        height: 30px;
+        position: relative;
+        top: -2px; }
       form .usr-terms label:after {
         content: " ";
         background-image: url(../img/check-symbol.svg?201602240035);

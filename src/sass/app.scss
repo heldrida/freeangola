@@ -512,6 +512,8 @@ form {
             line-height: 30px;
             width: 100%;
             position: relative;
+            color: $yellow-gold;
+            
             a {
                 color: inherit;
             }
@@ -530,6 +532,8 @@ form {
                 display: inline-block;
                 width: 30px;
                 height: 30px;
+                position: relative;
+                top: -2px;
             }
             &:after {
                 content: " ";
