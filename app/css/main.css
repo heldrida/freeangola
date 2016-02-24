@@ -704,7 +704,12 @@ form {
       z-index: 999; }
   .freeangola main .column-r {
     overflow-x: hidden;
-    overflow-y: visible; } }
+    overflow-y: visible; }
+  .freeangola .player-controllers .song-title {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 3px;
+    height: 24px; } }
 
 @media only screen and (max-width: 480px) {
   .freeangola .col-r {
