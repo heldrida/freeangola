@@ -116,6 +116,11 @@ window.addEventListener("load", function() {
                 // set initial tracker info
                 this.updateTracker(0);
 
+                // if browser allows it, play first track
+                setTimeout(function () {
+                	this.scPlayer.play();
+                }.bind(this), 300);
+
             }.bind(this));
 
             this.btnPlay.addEventListener("click", this.btnPlayHandler.bind(this));
