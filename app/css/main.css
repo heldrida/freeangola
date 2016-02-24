@@ -184,7 +184,8 @@ button {
       width: auto;
       margin: 25px;
       margin-bottom: 100px; }
-      .freeangola .sidebar .txt-content h3, .freeangola .sidebar .txt-content p {
+      .freeangola .sidebar .txt-content h3,
+      .freeangola .sidebar .txt-content p {
         margin-bottom: 25px; }
       .freeangola .sidebar .txt-content h3 {
         line-height: 40px;
@@ -568,7 +569,8 @@ form {
     width: 100%;
     height: 60px;
     margin-bottom: 25px; }
-    form .usr-text input, form .usr-text span,
+    form .usr-text input,
+    form .usr-text span,
     form .file input,
     form .file span {
       float: left;
@@ -603,7 +605,7 @@ form {
       visibility: hidden; }
   form .submit button {
     line-height: normal;
-    display: block;
+    display: none;
     border-radius: 5px;
     width: 100%;
     height: 60px;

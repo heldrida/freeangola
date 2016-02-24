@@ -134,6 +134,8 @@ window.addEventListener("load", function() {
 
             this.pubSub.subscribe("/app/events/soundcloud/upload_finished", this.uploadFinishedHandler.bind(this));
 
+            this.form.song_title.addEventListener("keyup", this.validateForm.bind(this));
+
         },
 
         setAnimationTimelines: function() {
@@ -427,14 +429,15 @@ window.addEventListener("load", function() {
             console.log("inputTxt", inputTxt);
 
             inputFile.addEventListener("change", function() {
-                /*
+
                 if (inputFile.files[0].type !== "audio/mp3") {
                     console.log("not mp3 file");
                 } else {
                     inputTxt.innerHTML = inputFile.files[0].name;
-                }*/
+                }
                 inputTxt.value = inputFile.files[0].name;
-            });
+                this.validateForm();
+            }.bind(this));
 
             inputFile.click();
 
@@ -443,6 +446,42 @@ window.addEventListener("load", function() {
         uploadFinishedHandler: function(permalink_url) {
 
             console.log("permalink_url", permalink_url);
+
+        },
+
+        validateForm: function() {
+
+            console.log("this.form.song_title.value.length", this.form.song_title.value.length);
+            console.log("this.form.audio.lenght === 1", this.form.audio.files.length);
+            console.log('this.form.audio.type === "audio/mp3"', this.form.audio.files[0].type);
+
+            if (this.form.song_title.value.length > 0 && this.form.audio.files && this.form.audio.files.length === 1 && this.form.audio.files[0].type === "audio/mp3") {
+
+                this.form.classList.add("valid");
+                TweenLite.to(this.form.submit, 0.3, {
+                    css: { opacity: 1 },
+                    onStart: function() {
+
+                        this.form.submit.style.opacity = 0;
+                        this.form.submit.style.display = "block";
+
+                    }.bind(this)
+                });
+
+            } else {
+
+                this.form.classList.remove("valid");
+                TweenLite.to(this.form.submit, 0.3, {
+                    css: { opacity: 0 },
+                    onComplete: function() {
+
+                        this.form.submit.style.opacity = "";
+                        this.form.submit.style.display = "";
+
+                    }.bind(this)
+                });
+
+            }
 
         }
 
