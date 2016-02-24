@@ -117,8 +117,9 @@ window.addEventListener("load", function() {
                 this.updateTracker(0);
 
                 // if browser allows it, play first track
-                setTimeout(function () {
-                	this.scPlayer.play();
+                setTimeout(function() {
+                    this.scPlayer.play();
+                    this.pubSub.publish("/app/events/soundcloud/click", "play");
                 }.bind(this), 300);
 
             }.bind(this));
@@ -243,6 +244,7 @@ window.addEventListener("load", function() {
 
             this.pubSub.publish("/app/events/soundcloud/click", "previous");
 
+
             this.scPlayer.previous();
 
         },
@@ -262,6 +264,11 @@ window.addEventListener("load", function() {
                     this.btnPlay.setAttribute('data-status', 'play');
                 } else {
                     this.btnPlay.setAttribute('data-status', 'stop');
+                }
+            } else if (param === "play") {
+                this.percentageBarSpan.style.width = (0 + "%");
+                if (this.scPlayer.playing) {
+                    this.btnPlay.setAttribute('data-status', 'play');
                 }
             }
 
@@ -359,6 +366,7 @@ window.addEventListener("load", function() {
             var index = [].indexOf.call(currentTarget.parentNode.children, currentTarget);
 
             this.scPlayer.play({ playlistIndex: index });
+            this.pubSub.publish("/app/events/soundcloud/click", "play");
 
         },
 
