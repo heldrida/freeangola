@@ -563,11 +563,23 @@ form {
                 height: calc(100vh - 62px);
             }
             .column-l {
+            	position: relative;
             	.main-poster {
             		height: calc(65vh - 62px);
             	}
             	.player-controllers {
             		height: calc(35vh);
+            	}
+            	&:after {
+					content: " ";
+					width: 2px;
+					height: 100%;
+					position: absolute;
+					display: block;
+					top: 0;
+					right: 0px;
+					background: #000;
+					z-index: 999;
             	}
             }
             .column-r {

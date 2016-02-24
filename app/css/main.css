@@ -674,10 +674,22 @@ form {
     float: left;
     width: 50%;
     height: calc(100vh - 62px); }
-  .freeangola main .column-l .main-poster {
-    height: calc(65vh - 62px); }
-  .freeangola main .column-l .player-controllers {
-    height: calc(35vh); }
+  .freeangola main .column-l {
+    position: relative; }
+    .freeangola main .column-l .main-poster {
+      height: calc(65vh - 62px); }
+    .freeangola main .column-l .player-controllers {
+      height: calc(35vh); }
+    .freeangola main .column-l:after {
+      content: " ";
+      width: 2px;
+      height: 100%;
+      position: absolute;
+      display: block;
+      top: 0;
+      right: 0px;
+      background: #000;
+      z-index: 999; }
   .freeangola main .column-r {
     overflow-x: hidden;
     overflow-y: visible; } }
