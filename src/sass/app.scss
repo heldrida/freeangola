@@ -513,6 +513,11 @@ form {
             width: 100%;
             position: relative;
             color: $yellow-gold;
+            cursor: pointer;
+            @include transition(opacity 0.2s);
+            &:hover{
+            	opacity: 0.8;
+            }
 
             a {
                 color: inherit;
@@ -533,7 +538,7 @@ form {
                 width: 30px;
                 height: 30px;
                 position: relative;
-                top: -4px;
+                top: -3px;
             }
             &:after {
                 content: " ";
@@ -543,7 +548,7 @@ form {
                 background-size: contain;
                 display: inline-block;
                 position: absolute;
-                top: -8px;
+                top: -7px;
                 left: 8px;
                 width: 30px;
                 height: 30px;
