@@ -669,12 +669,20 @@ form {
       form .usr-terms label.checked:after {
         display: block; }
 
-@media only screen and (min-device-width: 1024px) {
+@media only screen and (min-width: 1024px) {
   .freeangola main > .column {
     float: left;
-    width: 100%; } }
+    width: 50%;
+    height: calc(100vh - 62px); }
+  .freeangola main .column-l .main-poster {
+    height: calc(65vh - 62px); }
+  .freeangola main .column-l .player-controllers {
+    height: calc(35vh); }
+  .freeangola main .column-r {
+    overflow-x: hidden;
+    overflow-y: visible; } }
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-width: 480px) {
   .freeangola .col-r {
     transform: translateY(-50%);
     position: relative;

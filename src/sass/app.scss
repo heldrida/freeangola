@@ -554,20 +554,33 @@ form {
     }
 }
 
-@media only screen and (min-device-width: 1024px) {
+@media only screen and (min-width: 1024px) {
     .freeangola {
         main {
             > .column {
                 float: left;
-                width: 100%;
+                width: 50%;
+                height: calc(100vh - 62px);
+            }
+            .column-l {
+            	.main-poster {
+            		height: calc(65vh - 62px);
+            	}
+            	.player-controllers {
+            		height: calc(35vh);
+            	}
+            }
+            .column-r {
+            	overflow-x: hidden;
+            	overflow-y: visible;
             }
         }
     }
 }
 
-@media only screen and (max-device-width: 768px) {}
+@media only screen and (max-width: 768px) {}
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-width: 480px) {
     .freeangola {
         .col-r {
             transform: translateY(-50%);
