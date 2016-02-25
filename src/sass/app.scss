@@ -232,6 +232,7 @@ button {
                 background: transparent;
             }
             .play {
+                cursor: pointer;
                 border-radius: 50%;
                 border: 3px solid #000;
                 width: 75px;
@@ -280,6 +281,7 @@ button {
             }
             .previous,
             .next {
+                cursor: pointer;
                 width: 42px;
                 height: 30px;
                 display: block;
