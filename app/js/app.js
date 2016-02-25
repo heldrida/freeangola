@@ -116,10 +116,12 @@ window.addEventListener("load", function() {
                 this.updateTracker(0);
 
                 // if browser allows it, play first track
-                setTimeout(function() {
-                    this.scPlayer.play();
-                    this.pubSub.publish("/app/events/soundcloud/click", "play");
-                }.bind(this), 300);
+                if (Modernizr.autoplay) {
+	                setTimeout(function() {
+	                    this.scPlayer.play();
+	                    this.pubSub.publish("/app/events/soundcloud/click", "play");
+	                }.bind(this), 300);
+                }
 
             }.bind(this));
 
