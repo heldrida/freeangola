@@ -343,7 +343,7 @@ button {
             @include transform(translateY(-50%));
             overflow: hidden;
             position: absolute;
-            width: calc(100% - 180px - 194px);
+            width: calc(100% - 180px - 100px);
             p {
                 letter-spacing: 2px;
                 line-height: 24px;

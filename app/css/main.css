@@ -490,7 +490,7 @@ button {
       transform: translateY(-50%);
       overflow: hidden;
       position: absolute;
-      width: calc(100% - 180px - 194px); }
+      width: calc(100% - 180px - 100px); }
       .freeangola .song-list .details p {
         letter-spacing: 2px;
         line-height: 24px;
