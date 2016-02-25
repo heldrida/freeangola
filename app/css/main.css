@@ -505,7 +505,7 @@ button {
       position: absolute;
       top: 50%;
       right: 0;
-      margin: 0 30px;
+      margin: 0 15px;
       -webkit-transform: translateY(-50%);
       -khtml-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -525,6 +525,15 @@ button {
       pointer-events: auto; }
       .freeangola .song-list .like:hover {
         color: #C32F27; }
+    .freeangola .song-list .three-dots {
+      background-image: url(../img/show-more-button-with-three-dots.svg?201602250029);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-color: transparent;
+      width: 30px;
+      height: 60px;
+      display: block;
+      background-size: contain; }
     .freeangola .song-list .play {
       width: 65px;
       margin-left: 20px; }
@@ -764,26 +773,7 @@ form {
     position: relative;
     top: 50%; }
   .freeangola .song-list .options {
-    position: relative;
-    top: auto;
-    right: 2px;
-    padding: 0;
-    margin: 0;
-    -webkit-transform: translateY(0);
-    -khtml-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0); }
-    .freeangola .song-list .options button {
-      width: 37.5px;
-      height: 30px;
-      font-size: 30px;
-      display: inline-block;
-      padding: 0;
-      margin-right: 5px; }
-    .freeangola .song-list .options .play {
-      margin-left: 0px; }
+    margin: 0 5px; }
   .freeangola .song-list .details {
     position: relative;
     top: auto;

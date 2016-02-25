@@ -110,7 +110,6 @@ window.addEventListener("load", function() {
                 _.forEach(this.songListUlLi, function(v, k) {
                     this.songListUlLi[k].addEventListener('click', this.trackListItemClickHandler.bind(this));
 
-                    this.songListUlLi[k].querySelector('.like').addEventListener('click', this.likeBtnClickHandler.bind(this));
                 }.bind(this));
 
                 // set initial tracker info

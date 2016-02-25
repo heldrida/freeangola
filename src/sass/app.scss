@@ -361,7 +361,7 @@ button {
             position: absolute;
             top: 50%;
             right: 0;
-            margin: 0 30px;
+            margin: 0 15px;
             @include transform(translateY(-50%));
         }
         .like,
@@ -379,6 +379,16 @@ button {
             &:hover {
                 color: $red;
             }
+        }
+        .three-dots {
+            background-image: url(../img/show-more-button-with-three-dots.svg?201602250029);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: transparent;
+            width: 30px;
+            height: 60px;
+            display: block;
+            background-size: contain;
         }
         .play {
             width: 65px;
@@ -672,23 +682,7 @@ form {
         }
         .song-list {
             .options {
-                position: relative;
-                top: auto;
-                right: 2px;
-                padding: 0;
-                margin: 0;
-                @include transform(translateY(0));
-                button {
-                    width: 75px * 0.5;
-                    height: 60px * 0.5;
-                    font-size: 60px * 0.5;
-                    display: inline-block;
-                    padding: 0;
-                    margin-right: 5px;
-                }
-                .play {
-                    margin-left: 0px;
-                }
+                margin: 0 5px;
             }
             .details {
                 position: relative;
