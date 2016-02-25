@@ -93,6 +93,11 @@ button {
                 z-index: 1000;
             }
         }
+        .column-r {
+            overflow-x: hidden !important;
+            overflow-y: hidden !important;
+            overflow: hidden !important;
+        }
         .sidebar {
             overflow-y: visible;
             @include transform(translateX(0%));
@@ -515,10 +520,9 @@ form {
             color: $yellow-gold;
             cursor: pointer;
             @include transition(opacity 0.2s);
-            &:hover{
-            	opacity: 0.8;
+            &:hover {
+                opacity: 0.8;
             }
-
             a {
                 color: inherit;
             }
@@ -572,51 +576,90 @@ form {
                 height: calc(100vh - 62px);
             }
             .column-l {
-            	position: relative;
-            	.main-poster {
-            		height: calc(65vh - 62px);
-            	}
-            	.player-controllers {
-            		height: calc(35vh);
-            	}
-            	&:after {
-					content: " ";
-					width: 2px;
-					height: 100%;
-					position: absolute;
-					display: block;
-					top: 0;
-					right: 0px;
-					background: #000;
-					z-index: 999;
-            	}
+                position: relative;
+                .main-poster {
+                    height: calc(65vh - 62px);
+                }
+                .player-controllers {
+                    height: calc(35vh);
+                }
+                &:after {
+                    content: " ";
+                    width: 2px;
+                    height: 100%;
+                    position: absolute;
+                    display: block;
+                    top: 0;
+                    right: 0px;
+                    background: #000;
+                    z-index: 999;
+                }
             }
             .column-r {
-            	overflow-x: hidden;
-            	overflow-y: visible;
+                overflow-x: hidden;
+                overflow-y: scroll;
             }
         }
         .player-controllers {
-
-        	.song-title {
-				font-size: 18px;
-				line-height: 28px;
-				letter-spacing: 3px;
-				height: 24px;                	
+            .song-title {
+                font-size: 18px;
+                line-height: 28px;
+                letter-spacing: 3px;
+                height: 24px;
             }
-
         }
-
         .txt-content {
-        	&.note {
-        		p {
-        			margin-bottom:  0px;
-        			padding-bottom: 0px;
-        		}
-        	}
+            &.note {
+                p {
+                    margin-bottom: 0px;
+                    padding-bottom: 0px;
+                }
+            }
         }
     }
 }
+
+
+/*
+::-webkit-scrollbar {
+    background: transparent;
+    overflow: visible;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: yellow;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    min-width: 5px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    min-height: 5px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: $red;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.07);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    // background-color: #999;
+}
+*/
 
 @media only screen and (max-width: 768px) {}
 

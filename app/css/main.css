@@ -226,6 +226,10 @@ button {
         top: 0;
         right: -1px;
         z-index: 1000; }
+    .freeangola.menu-open .column-r {
+      overflow-x: hidden !important;
+      overflow-y: hidden !important;
+      overflow: hidden !important; }
     .freeangola.menu-open .sidebar {
       overflow-y: visible;
       -webkit-transform: translateX(0%);
@@ -704,7 +708,7 @@ form {
       z-index: 999; }
   .freeangola main .column-r {
     overflow-x: hidden;
-    overflow-y: visible; }
+    overflow-y: scroll; }
   .freeangola .player-controllers .song-title {
     font-size: 18px;
     line-height: 28px;
@@ -714,6 +718,46 @@ form {
     margin-bottom: 0px;
     padding-bottom: 0px; } }
 
+/*
+::-webkit-scrollbar {
+    background: transparent;
+    overflow: visible;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: yellow;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    min-width: 5px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    min-height: 5px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: $red;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.10), inset 0 -1px 0 rgba(0, 0, 0, 0.07);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    // background-color: #999;
+}
+*/
 @media only screen and (max-width: 480px) {
   .freeangola .col-r {
     transform: translateY(-50%);

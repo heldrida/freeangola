@@ -146,6 +146,7 @@ window.addEventListener("load", function() {
 
             this.termsConditionsCheckbox.addEventListener("click", this.termsConditionsCheckboxHandler.bind(this));
 
+            this.columnRight = document.querySelector(".column-r");
         },
 
         setAnimationTimelines: function() {
@@ -352,8 +353,10 @@ window.addEventListener("load", function() {
 
             if (!this.freeAngolaContainer.classList.contains('menu-open')) {
                 this.freeAngolaContainer.classList.add('menu-open');
+                this.columnRight.style.width = "49.999%"; // fix issue chrome
             } else {
                 this.freeAngolaContainer.classList.remove('menu-open');
+                this.columnRight.style.width = "";
             }
 
         },
