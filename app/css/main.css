@@ -167,19 +167,15 @@ button {
     -moz-transform: translateX(100%);
     -ms-transform: translateX(100%);
     -o-transform: translateX(100%);
-    transform: translateX(100%);
-    /*
-		&:before {
-			content: " ";
-			width: 2px;
-			height: 100%;
-			background-color: #000;
-			position: absolute;
-			top: 0;
-			left: 0px;
-			box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.4);
-		}
-		*/ }
+    transform: translateX(100%); }
+    .freeangola .sidebar .wrp {
+      max-width: 768px;
+      margin-left: 20px; }
+    .freeangola .sidebar .freeangola-article {
+      margin-left: 50px !important;
+      margin-right: 50px !important; }
+    .freeangola .sidebar .share-btns {
+      -webkit-filter: saturate(0.4); }
     .freeangola .sidebar .txt-content {
       width: auto;
       margin: 25px;

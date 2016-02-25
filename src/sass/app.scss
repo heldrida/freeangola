@@ -36,18 +36,17 @@ button {
         right: 0;
         overflow: hidden;
         @include transform(translateX(100%));
-        /*
-		&:before {
-			content: " ";
-			width: 2px;
-			height: 100%;
-			background-color: #000;
-			position: absolute;
-			top: 0;
-			left: 0px;
-			box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.4);
-		}
-		*/
+        .wrp {
+            max-width: 768px;
+            margin-left: 20px;
+        }
+        .freeangola-article {
+            margin-left: 50px !important;
+            margin-right: 50px !important;
+        }
+        .share-btns {
+            -webkit-filter: saturate(0.4);
+        }
         .txt-content {
             width: auto;
             margin: $common-margin-lr;
