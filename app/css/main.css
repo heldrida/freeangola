@@ -478,7 +478,22 @@ button {
       -moz-transition: background-color 0.2s, opacity 0.2s;
       -ms-transition: background-color 0.2s, opacity 0.2s;
       -o-transition: background-color 0.2s, opacity 0.2s;
-      transition: background-color 0.2s, opacity 0.2s; }
+      transition: background-color 0.2s, opacity 0.2s;
+      /*
+                &.active {
+					&:before {
+						content: " ";
+						width: 100%;
+						height: 100%;
+						background-color: rgba(255, 255, 255, 0.2);
+						position: absolute;
+						top: 0;
+						left: 0;
+						opacity: 1;
+	                	pointer-events: none;
+					}
+                }
+                */ }
       .freeangola .song-list ul li:after {
         content: " ";
         width: 100%;
@@ -501,15 +516,8 @@ button {
         background-color: #F7A438; }
         .freeangola .song-list ul li.active .details {
           color: #C32F27; }
-      .freeangola .song-list ul li:hover {
-        /*
-                    background-color: rgba(247, 164, 56, 0.7);
-                    .details {
-                        color: $red;
-                    }
-                    */ }
-        .freeangola .song-list ul li:hover:after {
-          opacity: 0.2; }
+      .freeangola .song-list ul li:hover:after {
+        opacity: 0.2; }
       .freeangola .song-list ul li .artist-poster,
       .freeangola .song-list ul li .col-r {
         pointer-events: none; }
