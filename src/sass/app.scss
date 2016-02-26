@@ -328,17 +328,25 @@ button {
                 height: 150px;
                 background-color: $red-dark;
                 cursor: pointer;
-                @include transition(background-color 0.2s);
+                @include transition(background-color 0.2s, opacity 0.2s);
                 &:nth-child(odd) {
                     background-color: $red;
                 }
-                &.active,
-                &:hover {
+                &.active {
                     background-color: $yellow-gold;
                     .details {
                         color: $red;
                     }
                 }
+				&:hover {
+					opacity: 0.9;
+                    /*
+                    background-color: rgba(247, 164, 56, 0.7);
+                    .details {
+                        color: $red;
+                    }
+                    */
+				}
                 .artist-poster,
                 .col-r {
                     pointer-events: none;

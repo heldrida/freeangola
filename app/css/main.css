@@ -473,18 +473,26 @@ button {
       height: 150px;
       background-color: #780116;
       cursor: pointer;
-      -webkit-transition: background-color 0.2s;
-      -khtml-transition: background-color 0.2s;
-      -moz-transition: background-color 0.2s;
-      -ms-transition: background-color 0.2s;
-      -o-transition: background-color 0.2s;
-      transition: background-color 0.2s; }
+      -webkit-transition: background-color 0.2s, opacity 0.2s;
+      -khtml-transition: background-color 0.2s, opacity 0.2s;
+      -moz-transition: background-color 0.2s, opacity 0.2s;
+      -ms-transition: background-color 0.2s, opacity 0.2s;
+      -o-transition: background-color 0.2s, opacity 0.2s;
+      transition: background-color 0.2s, opacity 0.2s; }
       .freeangola .song-list ul li:nth-child(odd) {
         background-color: #C32F27; }
-      .freeangola .song-list ul li.active, .freeangola .song-list ul li:hover {
+      .freeangola .song-list ul li.active {
         background-color: #F7A438; }
-        .freeangola .song-list ul li.active .details, .freeangola .song-list ul li:hover .details {
+        .freeangola .song-list ul li.active .details {
           color: #C32F27; }
+      .freeangola .song-list ul li:hover {
+        opacity: 0.9;
+        /*
+                    background-color: rgba(247, 164, 56, 0.7);
+                    .details {
+                        color: $red;
+                    }
+                    */ }
       .freeangola .song-list ul li .artist-poster,
       .freeangola .song-list ul li .col-r {
         pointer-events: none; }
