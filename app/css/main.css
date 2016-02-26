@@ -481,17 +481,17 @@ button {
       transition: background-color 0.2s, opacity 0.2s;
       /*
                 &.active {
-					&:before {
-						content: " ";
-						width: 100%;
-						height: 100%;
-						background-color: rgba(255, 255, 255, 0.2);
-						position: absolute;
-						top: 0;
-						left: 0;
-						opacity: 1;
-	                	pointer-events: none;
-					}
+                    &:before {
+                        content: " ";
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(255, 255, 255, 0.2);
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        opacity: 1;
+                        pointer-events: none;
+                    }
                 }
                 */ }
       .freeangola .song-list ul li:after {
@@ -557,16 +557,16 @@ button {
         -o-transform: translateX(calc(100% + 150px));
         transform: translateX(calc(100% + 150px));
         /*
-                	&:after {
-                		content: " ";
-                		height: 1px;
-                		width: 100%;
-                		background-color: #000;
-                		position: absolute;
-                		bottom: 0;
-                		left: 0;
-                	}
-                	*/ }
+                    &:after {
+                        content: " ";
+                        height: 1px;
+                        width: 100%;
+                        background-color: #000;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                    }
+                    */ }
         .freeangola .song-list ul li .song-opts .col-r .details {
           color: #C32F27;
           left: auto;
@@ -885,35 +885,29 @@ form {
     // background-color: #999;
 }
 */
-@media only screen and (max-width: 480px) {
-  .freeangola .col-r {
+@media only screen and (max-width: 1024px) {
+  .freeangola .main-content .column .col-r {
+    width: 100%;
+    height: 100%;
     transform: translateY(-50%);
     position: relative;
     top: 50%; }
-  .freeangola .song-list .options {
-    margin: 0 5px; }
-  .freeangola .song-list .details {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    width: auto;
-    padding: 0;
-    padding-right: 25px;
-    margin: 0;
-    margin-bottom: 10px;
-    -webkit-transform: translateY(0);
-    -khtml-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0); }
-    .freeangola .song-list .details p {
-      font-weight: normal;
-      letter-spacing: 1.2px;
-      line-height: 14.4px;
-      font-size: 10.8px; }
-    .freeangola .song-list .details h4 {
-      letter-spacing: 2px;
-      line-height: 16.5px;
-      font-size: 12px; } }
+    .freeangola .main-content .column .col-r p {
+      line-height: 15.6px;
+      font-size: 11.7px;
+      font-weight: normal; }
+    .freeangola .main-content .column .col-r h4 {
+      letter-spacing: 2.6px;
+      line-height: 21.45px;
+      font-size: 14.4px; }
+  .freeangola .main-content .column .song-data {
+    width: 100% !important;
+    height: 100% !important; }
+    .freeangola .main-content .column .song-data .options {
+      margin-right: 10px; }
+  .freeangola .main-content .song-list .options {
+    margin: 0; }
+  .freeangola .main-content .song-list .song-opts .details {
+    width: 70% !important; }
+  .freeangola .main-content .song-list .close.collapse:before {
+    font-size: 40px; } }

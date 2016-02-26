@@ -301,27 +301,25 @@ button {
     }
     .song-list {
         overflow: hidden;
-
-		.close.collapse {
-			cursor: pointer;
-			background: none;
-			border: none;
-			pointer-events: auto;
-			@include transition(opacity 0.2s);
-			&:hover {
-				opacity: 0.5;
-			}
-			&:before {
-				content: "×";
-				width: auto;
-				height: auto;
-				color: #000;
-				display: inline-block;
-				font-size: 50px;
-				line-height: 10px;
-			}
-		}
-
+        .close.collapse {
+            cursor: pointer;
+            background: none;
+            border: none;
+            pointer-events: auto;
+            @include transition(opacity 0.2s);
+            &:hover {
+                opacity: 0.5;
+            }
+            &:before {
+                content: "×";
+                width: auto;
+                height: auto;
+                color: #000;
+                display: inline-block;
+                font-size: 50px;
+                line-height: 10px;
+            }
+        }
         ul {
             li {
                 position: relative;
@@ -330,21 +328,20 @@ button {
                 cursor: pointer;
                 @include transition(background-color 0.2s, opacity 0.2s);
                 &:after {
-					content: " ";
-					width: 100%;
-					height: 100%;
-					background-color: $yellow-gold;
-					position: absolute;
-					top: 0;
-					left: 0;
-					opacity: 0;
-                	@include transition(opacity 0.2s);
-                	pointer-events: none;
+                    content: " ";
+                    width: 100%;
+                    height: 100%;
+                    background-color: $yellow-gold;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    opacity: 0;
+                    @include transition(opacity 0.2s);
+                    pointer-events: none;
                 }
                 &:nth-child(odd) {
                     background-color: $red;
                 }
-
                 &.active {
                     background-color: $yellow-gold;
                     .details {
@@ -353,25 +350,24 @@ button {
                 }
                 /*
                 &.active {
-					&:before {
-						content: " ";
-						width: 100%;
-						height: 100%;
-						background-color: rgba(255, 255, 255, 0.2);
-						position: absolute;
-						top: 0;
-						left: 0;
-						opacity: 1;
-	                	pointer-events: none;
-					}
+                    &:before {
+                        content: " ";
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(255, 255, 255, 0.2);
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        opacity: 1;
+                        pointer-events: none;
+                    }
                 }
                 */
-				&:hover {
-					&:after {
-						opacity: 0.2;
-
-					}
-				}
+                &:hover {
+                    &:after {
+                        opacity: 0.2;
+                    }
+                }
                 .artist-poster,
                 .col-r {
                     pointer-events: none;
@@ -379,57 +375,52 @@ button {
                 .wrp {
                     max-width: 768px;
                 }
-
                 .sg {
-                	@include transition(transform 0.2s);
+                    @include transition(transform 0.2s);
                 }
-
                 .song-data {
-                	@include transform(translateX(0));
-                	z-index: 1;
-					width: auto;
-					height: auto;
-					overflow: hidden;
+                    @include transform(translateX(0));
+                    z-index: 1;
+                    width: auto;
+                    height: auto;
+                    overflow: hidden;
                 }
-
                 .song-opts {
-                	position: absolute;
-                	top: 0;
-                	left: 0;
-                	width: calc(100% - 150px);
-                	height: 100%;
-                	z-index: 2;
-                	background-color: $yellow-gold;
-                	color: $red-dark;
-                	@include transform(translateX(calc(100% + 150px)));
-                	/*
-                	&:after {
-                		content: " ";
-                		height: 1px;
-                		width: 100%;
-                		background-color: #000;
-                		position: absolute;
-                		bottom: 0;
-                		left: 0;
-                	}
-                	*/
-
-                	.col-r {
-                		.details {
-                			color: $red;
-                			left: auto;
-                			margin-left: 20px;
-                			p {
-	                			padding-bottom: 10px;
-	                			font-weight: bold;
-	                			letter-spacing: 2px;
-                			}
-                		}
-                	}
-
-                	&.active {
-	                	@include transform(translateX(+150px));
-                	}
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: calc(100% - 150px);
+                    height: 100%;
+                    z-index: 2;
+                    background-color: $yellow-gold;
+                    color: $red-dark;
+                    @include transform(translateX(calc(100% + 150px)));
+                    /*
+                    &:after {
+                        content: " ";
+                        height: 1px;
+                        width: 100%;
+                        background-color: #000;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                    }
+                    */
+                    .col-r {
+                        .details {
+                            color: $red;
+                            left: auto;
+                            margin-left: 20px;
+                            p {
+                                padding-bottom: 10px;
+                                font-weight: bold;
+                                letter-spacing: 2px;
+                            }
+                        }
+                    }
+                    &.active {
+                        @include transform(translateX(+150px));
+                    }
                 }
             }
         }
@@ -500,9 +491,8 @@ button {
             position: relative;
             pointer-events: initial;
             cursor: pointer;
-
             &:hover {
-            	opacity: 0.5;
+                opacity: 0.5;
             }
         }
         .play {
@@ -786,40 +776,48 @@ form {
 }
 */
 
-@media only screen and (max-width: 768px) {}
-
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1024px) {
     .freeangola {
-        .col-r {
-            transform: translateY(-50%);
-            position: relative;
-            top: 50%;
-        }
-        .song-list {
-            .options {
-                margin: 0 5px;
-            }
-            .details {
-                position: relative;
-                top: auto;
-                left: auto;
-                right: auto;
-                width: auto;
-                padding: 0;
-                padding-right: $common-margin-lr;
-                margin: 0;
-                margin-bottom: 10px;
-                @include transform(translateY(0));
-                p {
-                    font-weight: normal;
-                    letter-spacing: 2px * 0.6;
-                    line-height: 24px * 0.6;
-                    font-size: 18px * 0.6;
+        .main-content {
+            .column {
+                .col-r {
+                    width: 100%;
+                    height: 100%;
+                    transform: translateY(-50%);
+                    position: relative;
+                    top: 50%;
+                    p {
+                        line-height: 24px * 0.65;
+                        font-size: 18px * 0.65;
+                        font-weight: normal;
+                    }
+                    h4 {
+                        letter-spacing: 4px * 0.65;
+                        line-height: 33px * 0.65;
+                        font-size: 24px * 0.6;
+                    }
                 }
-                h4 {
-                    letter-spacing: 4px * 0.5;
-                    line-height: 33px * 0.5;
-                    font-size: 24px * 0.5;
+                .song-data {
+                    width: 100% !important;
+                    height: 100% !important;
+                    .options {
+                        margin-right: 10px;
+                    }
+                }
+            }
+            .song-list {
+                .options {
+                    margin: 0;
+                }
+                .song-opts {
+                    .details {
+                        width: 70% !important;
+                    }
+                }
+                .close.collapse {
+                    &:before {
+                        font-size: 40px;
+                    }
                 }
             }
         }
