@@ -7,6 +7,11 @@ console.log('app.js');
         heldrida is 2575422
  */
 
+function findAncestor (el, cls) {
+    while ((el = el.parentElement) && !el.classList.contains(cls));
+    return el;
+}
+
 window.addEventListener("load", function() {
 
     function FreeAngola() {
@@ -81,6 +86,10 @@ window.addEventListener("load", function() {
 
             this.termsConditionsCheckbox = this.form.querySelector('.usr-terms label');
 
+            this.threeDots;
+
+            this.closeCollapse;
+
         },
 
         setEventListeners: function() {
@@ -112,6 +121,18 @@ window.addEventListener("load", function() {
 
                 }.bind(this));
 
+                // set property
+	            this.threeDots = document.querySelectorAll(".three-dots");
+	            _.forEach(this.threeDots, function (v, k) {
+	            	this.threeDots[k].addEventListener("click", this.threeDotsHandler.bind(this));
+	            }.bind(this));
+
+	            // set property
+	            this.closeCollapse = document.querySelectorAll(".close.collapse");
+	            _.forEach(this.closeCollapse, function (v, k) {
+	            	this.closeCollapse[k].addEventListener("click", this.closeCollapseHandler.bind(this));
+	            }.bind(this));
+
                 // set initial tracker info
                 this.updateTracker(0);
 
@@ -122,6 +143,8 @@ window.addEventListener("load", function() {
 	                    this.pubSub.publish("/app/events/soundcloud/click", "play");
 	                }.bind(this), 300);
                 }
+
+                this.injectFbSdk();
 
             }.bind(this));
 
@@ -148,6 +171,7 @@ window.addEventListener("load", function() {
             this.termsConditionsCheckbox.addEventListener("click", this.termsConditionsCheckboxHandler.bind(this));
 
             this.columnRight = document.querySelector(".column-r");
+
         },
 
         setAnimationTimelines: function() {
@@ -517,6 +541,78 @@ window.addEventListener("load", function() {
             }
 
             this.validateForm();
+
+        },
+
+        threeDotsHandler: function (e) {
+
+        	e.preventDefault();
+        	e.stopPropagation();
+
+        	e.target.parentNode;
+
+        	var parent = findAncestor(e.target, "row");
+
+        	if (!parent) {
+        		return null;
+        	}
+
+        	var songDataColR = parent.querySelector(".song-data .col-r");
+        	var songOptions = parent.querySelector(".song-opts");
+
+        	var tl = new TimelineLite({
+        		onStart: function () {
+        			songOptions.classList.add("active");
+        		}.bind(this),
+        		onComplete: function () {
+
+        		}.bind(this)
+        	});
+
+        	tl.to(songDataColR, 0.2, { css: { opacity: 0 } }, 0);
+
+        },
+
+        injectFbSdk: function () {
+
+		    (function(d, s, id) {
+		        var js, fjs = d.getElementsByTagName(s)[0];
+		        if (d.getElementById(id)) return;
+		        js = d.createElement(s);
+		        js.async=true;
+		        js.id = id;
+		        js.src = "//connect.facebook.net/pt_PT/sdk.js#xfbml=1&version=v2.5&appId=1365519160254676";
+		        fjs.parentNode.insertBefore(js, fjs);
+		    }(document, 'script', 'facebook-jssdk'));
+
+        },
+
+        closeCollapseHandler: function (e) {
+
+        	e.preventDefault();
+        	e.stopPropagation();
+        	e.target.parentNode;
+
+        	var parent = findAncestor(e.target, "row");
+
+        	if (!parent) {
+        		return null;
+        	}
+
+        	var songDataColR = parent.querySelector(".song-data .col-r");
+        	var songOptions = parent.querySelector(".song-opts");
+
+        	var tl = new TimelineLite({
+        		onStart: function () {
+
+        		}.bind(this),
+        		onComplete: function () {
+        			songOptions.classList.remove("active");
+        		}.bind(this)
+        	});
+
+        	tl.to(songDataColR, 0.2, { css: { opacity: 1 } }, 0);
+
 
         }
 

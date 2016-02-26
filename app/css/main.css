@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* -------------------------------------------------------------
   Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
   By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
@@ -446,6 +447,29 @@ button {
         background-image: url(../img/btn-right.svg?2016021916146); }
   .freeangola .song-list {
     overflow: hidden; }
+    .freeangola .song-list .close.collapse {
+      cursor: pointer;
+      background: none;
+      border: none;
+      pointer-events: auto;
+      -webkit-transition: opacity 0.2s;
+      -khtml-transition: opacity 0.2s;
+      -moz-transition: opacity 0.2s;
+      -ms-transition: opacity 0.2s;
+      -o-transition: opacity 0.2s;
+      transition: opacity 0.2s; }
+      .freeangola .song-list .close.collapse:hover {
+        opacity: 0.5; }
+      .freeangola .song-list .close.collapse:before {
+        content: "×";
+        width: auto;
+        height: auto;
+        color: #000;
+        display: inline-block;
+        font-size: 50px;
+        line-height: 50px;
+        background: transparent;
+        border: none; }
     .freeangola .song-list ul li {
       position: relative;
       height: 150px;
@@ -468,6 +492,65 @@ button {
         pointer-events: none; }
       .freeangola .song-list ul li .wrp {
         max-width: 768px; }
+      .freeangola .song-list ul li .sg {
+        -webkit-transition: transform 0.2s;
+        -khtml-transition: transform 0.2s;
+        -moz-transition: transform 0.2s;
+        -ms-transition: transform 0.2s;
+        -o-transition: transform 0.2s;
+        transition: transform 0.2s; }
+      .freeangola .song-list ul li .song-data {
+        -webkit-transform: translateX(0);
+        -khtml-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+        z-index: 1;
+        width: auto;
+        height: auto;
+        overflow: hidden; }
+      .freeangola .song-list ul li .song-opts {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(100% - 150px);
+        height: 100%;
+        z-index: 2;
+        background-color: #F7A438;
+        color: #780116;
+        -webkit-transform: translateX(calc(100% + 150px));
+        -khtml-transform: translateX(calc(100% + 150px));
+        -moz-transform: translateX(calc(100% + 150px));
+        -ms-transform: translateX(calc(100% + 150px));
+        -o-transform: translateX(calc(100% + 150px));
+        transform: translateX(calc(100% + 150px));
+        /*
+                	&:after {
+                		content: " ";
+                		height: 1px;
+                		width: 100%;
+                		background-color: #000;
+                		position: absolute;
+                		bottom: 0;
+                		left: 0;
+                	}
+                	*/ }
+        .freeangola .song-list ul li .song-opts .col-r .details {
+          color: #C32F27;
+          left: auto;
+          margin-left: 20px; }
+          .freeangola .song-list ul li .song-opts .col-r .details p {
+            padding-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 2px; }
+        .freeangola .song-list ul li .song-opts.active {
+          -webkit-transform: translateX(150px);
+          -khtml-transform: translateX(150px);
+          -moz-transform: translateX(150px);
+          -ms-transform: translateX(150px);
+          -o-transform: translateX(150px);
+          transform: translateX(150px); }
     .freeangola .song-list .artist-poster {
       width: 150px;
       height: 150px;
@@ -531,7 +614,13 @@ button {
       width: 30px;
       height: 60px;
       display: block;
-      background-size: contain; }
+      background-size: contain;
+      z-index: 999;
+      position: relative;
+      pointer-events: initial;
+      cursor: pointer; }
+      .freeangola .song-list .three-dots:hover {
+        opacity: 0.5; }
     .freeangola .song-list .play {
       width: 65px;
       margin-left: 20px; }

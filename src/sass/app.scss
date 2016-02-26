@@ -301,6 +301,29 @@ button {
     }
     .song-list {
         overflow: hidden;
+
+		.close.collapse {
+			cursor: pointer;
+			background: none;
+			border: none;
+			pointer-events: auto;
+			@include transition(opacity 0.2s);
+			&:hover {
+				opacity: 0.5;
+			}
+			&:before {
+				content: "×";
+				width: auto;
+				height: auto;
+				color: #000;
+				display: inline-block;
+				font-size: 50px;
+				line-height: 50px;
+				background: transparent;
+				border: none;
+			}
+		}
+
         ul {
             li {
                 position: relative;
@@ -324,6 +347,58 @@ button {
                 }
                 .wrp {
                     max-width: 768px;
+                }
+
+                .sg {
+                	@include transition(transform 0.2s);
+                }
+
+                .song-data {
+                	@include transform(translateX(0));
+                	z-index: 1;
+					width: auto;
+					height: auto;
+					overflow: hidden;
+                }
+
+                .song-opts {
+                	position: absolute;
+                	top: 0;
+                	left: 0;
+                	width: calc(100% - 150px);
+                	height: 100%;
+                	z-index: 2;
+                	background-color: $yellow-gold;
+                	color: $red-dark;
+                	@include transform(translateX(calc(100% + 150px)));
+                	/*
+                	&:after {
+                		content: " ";
+                		height: 1px;
+                		width: 100%;
+                		background-color: #000;
+                		position: absolute;
+                		bottom: 0;
+                		left: 0;
+                	}
+                	*/
+
+                	.col-r {
+                		.details {
+                			color: $red;
+                			left: auto;
+                			margin-left: 20px;
+                			p {
+	                			padding-bottom: 10px;
+	                			font-weight: bold;
+	                			letter-spacing: 2px;
+                			}
+                		}
+                	}
+
+                	&.active {
+	                	@include transform(translateX(+150px));
+                	}
                 }
             }
         }
@@ -390,6 +465,14 @@ button {
             height: 60px;
             display: block;
             background-size: contain;
+            z-index: 999;
+            position: relative;
+            pointer-events: initial;
+            cursor: pointer;
+
+            &:hover {
+            	opacity: 0.5;
+            }
         }
         .play {
             width: 65px;
