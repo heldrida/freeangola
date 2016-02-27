@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="css/main.css">
     <meta property="og:url" content="http://freeangola.com" />
     <meta property="og:type" content="website" />
@@ -104,33 +104,33 @@
         <ul>
             <% _.forEach(tracks, function(track) { %>
                 <li class="row">
-                	<div class="sg song-data" data-toggle="on">
-	                    <div class="artist-poster">
-	                        <img src="<%- track.poster %>" alt="<%- track.title %> - <%- track.title %>">
-	                    </div>
-	                    <div class="col-r">
-	                        <div class="details">
-	                            <p>
-	                                <%- track.title %>
-	                            </p>
-	                            <h4><%- track.artist %></h4>
-	                        </div>
-	                        <div class="options">
-	                            <button class="three-dots"></button>
-	                        </div>
-	                    </div>
-                	</div>
-                	<div class="sg song-opts" data-toggle="off">
-	                    <div class="col-r">
-	                        <div class="details">
-	                        	<p>Ajuda a divulgar, partilha!</p>
-								<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
-	                        </div>
-	                        <div class="options">
-	                            <button class="close collapse"></button>
-	                        </div>
-	                    </div>
-                	</div>
+                    <div class="sg song-data" data-toggle="on">
+                        <div class="artist-poster">
+                            <img src="<%- track.poster %>" alt="<%- track.title %> - <%- track.title %>">
+                        </div>
+                        <div class="col-r">
+                            <div class="details">
+                                <p>
+                                    <%- track.title %>
+                                </p>
+                                <h4><%- track.artist %></h4>
+                            </div>
+                            <div class="options">
+                                <button class="three-dots"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sg song-opts" data-toggle="off">
+                        <div class="col-r">
+                            <div class="details">
+                                <p>Ajuda a divulgar, partilha!</p>
+                                <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+                            </div>
+                            <div class="options">
+                                <button class="close collapse"></button>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <% }); %>
         </ul>
