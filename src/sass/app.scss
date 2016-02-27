@@ -860,6 +860,11 @@ form {
         }
         .main-content {
             .column {
+                &.column-r {
+                    .artist-poster {
+                        margin-right: 15px;
+                    }
+                }
                 .col-r {
                     width: 100%;
                     height: 100%;
@@ -887,7 +892,8 @@ form {
             }
             .song-list {
                 .details {
-                    width: calc(100% - 220px);
+                    width: calc(100% - 200px);
+                    left: 165px
                 }
                 .options {
                     margin: 0;
