@@ -886,6 +886,8 @@ form {
 }
 */
 @media only screen and (max-width: 1024px) {
+  .freeangola .player-controllers .song-title {
+    font-size: 12px; }
   .freeangola .main-content .column .col-r {
     width: 100%;
     height: 100%;
@@ -910,4 +912,26 @@ form {
   .freeangola .main-content .song-list .song-opts .details {
     width: 70% !important; }
   .freeangola .main-content .song-list .close.collapse:before {
-    font-size: 40px; } }
+    font-size: 40px; }
+  .freeangola .sidebar .freeangola-article {
+    margin-left: 20px !important;
+    margin-right: 20px !important; }
+    .freeangola .sidebar .freeangola-article h3 {
+      line-height: 26px;
+      font-size: 20.8px;
+      letter-spacing: 1.3px; }
+    .freeangola .sidebar .freeangola-article p {
+      line-height: 18.2px;
+      font-size: 11.7px;
+      letter-spacing: 1.3px; }
+  .freeangola .sidebar .wrp {
+    margin: 0 20px; }
+    .freeangola .sidebar .wrp .txt-content {
+      margin: 0; }
+      .freeangola .sidebar .wrp .txt-content.note {
+        padding: 10px; }
+        .freeangola .sidebar .wrp .txt-content.note p {
+          line-height: 18.2px;
+          font-size: 11.7px;
+          letter-spacing: 1.3px;
+          margin-bottom: 0; } }

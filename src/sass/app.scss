@@ -778,6 +778,9 @@ form {
 
 @media only screen and (max-width: 1024px) {
     .freeangola {
+        .player-controllers .song-title {
+            font-size: 12px;
+        }
         .main-content {
             .column {
                 .col-r {
@@ -817,6 +820,37 @@ form {
                 .close.collapse {
                     &:before {
                         font-size: 40px;
+                    }
+                }
+            }
+        }
+        .sidebar {
+            .freeangola-article {
+                margin-left: 20px !important;
+                margin-right: 20px !important;
+                h3 {
+                    line-height: 40px * 0.65;
+                    font-size: 32px * 0.65;
+                    letter-spacing: 2px * 0.65;
+                }
+                p {
+                    line-height: 28px * 0.65;
+                    font-size: 18px * 0.65;
+                    letter-spacing: 2px * 0.65;
+                }
+            }
+            .wrp {
+                margin: 0 20px;
+                .txt-content {
+                    margin: 0;
+                    &.note {
+                        padding: 10px;
+                        p {
+                            line-height: 28px * 0.65;
+                            font-size: 18px * 0.65;
+                            letter-spacing: 2px * 0.65;
+                            margin-bottom: 0;
+                        }
                     }
                 }
             }
