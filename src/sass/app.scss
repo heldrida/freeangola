@@ -781,12 +781,65 @@ form {
 
 @media only screen and (max-width: 1024px) {
     .freeangola {
+        header .logo {
+            @include transform(translateY(-50%) translateX(20px));
+        }
+        header h1 {
+            padding-left: 70px;
+        }
+        header .menu {
+            right: 0px;
+        }
         &.menu-open {
             .main-content {
                 @include transform(translateX(-100%));
             }
             .sidebar {
                 width: 100%;
+            }
+        }
+        .main-poster {
+            height: 35vh;
+        }
+        .player-controllers {
+            height: 175px;
+            .song-title {
+                margin: 10px 0;
+            }
+            .options {
+                width: 150px;
+                height: 60px;
+            }
+            .options .previous,
+            .options .next {
+                width: 42px * 0.75;
+                height: 30px * 0.75;
+            }
+            .options .play {
+                width: 75px * 0.75;
+                height: 75px * 0.75;
+                margin: 0 12.5px 0 15px;
+                &[data-status="play"] {
+                    &:after {
+                        width: 33.6px * 0.75 !important;
+                        height: 36px * 0.75 !important;
+                        background-size: 22px !important;
+                    }
+                }
+                &[data-status="pause"] {
+                    &:after {
+                        width: 33.6px * 0.75 !important;
+                        height: 36px * 0.75 !important;
+                        background-size: 25px !important;
+                    }
+                }
+                &[data-status="stop"] {
+                    &:after {
+                        width: 33.6px * 0.75 !important;
+                        height: 36px * 0.75 !important;
+                        background-size: 25px !important;
+                    }
+                }
             }
         }
         .mobile-close-btn {
@@ -832,6 +885,9 @@ form {
                 }
             }
             .song-list {
+                .details {
+                    width: calc(100% - 220px);
+                }
                 .options {
                     margin: 0;
                 }

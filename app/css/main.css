@@ -888,6 +888,17 @@ form {
 }
 */
 @media only screen and (max-width: 1024px) {
+  .freeangola header .logo {
+    -webkit-transform: translateY(-50%) translateX(20px);
+    -khtml-transform: translateY(-50%) translateX(20px);
+    -moz-transform: translateY(-50%) translateX(20px);
+    -ms-transform: translateY(-50%) translateX(20px);
+    -o-transform: translateY(-50%) translateX(20px);
+    transform: translateY(-50%) translateX(20px); }
+  .freeangola header h1 {
+    padding-left: 70px; }
+  .freeangola header .menu {
+    right: 0px; }
   .freeangola.menu-open .main-content {
     -webkit-transform: translateX(-100%);
     -khtml-transform: translateX(-100%);
@@ -897,6 +908,35 @@ form {
     transform: translateX(-100%); }
   .freeangola.menu-open .sidebar {
     width: 100%; }
+  .freeangola .main-poster {
+    height: 35vh; }
+  .freeangola .player-controllers {
+    height: 175px; }
+    .freeangola .player-controllers .song-title {
+      margin: 10px 0; }
+    .freeangola .player-controllers .options {
+      width: 150px;
+      height: 60px; }
+    .freeangola .player-controllers .options .previous,
+    .freeangola .player-controllers .options .next {
+      width: 31.5px;
+      height: 22.5px; }
+    .freeangola .player-controllers .options .play {
+      width: 56.25px;
+      height: 56.25px;
+      margin: 0 12.5px 0 15px; }
+      .freeangola .player-controllers .options .play[data-status="play"]:after {
+        width: 25.2px !important;
+        height: 27px !important;
+        background-size: 22px !important; }
+      .freeangola .player-controllers .options .play[data-status="pause"]:after {
+        width: 25.2px !important;
+        height: 27px !important;
+        background-size: 25px !important; }
+      .freeangola .player-controllers .options .play[data-status="stop"]:after {
+        width: 25.2px !important;
+        height: 27px !important;
+        background-size: 25px !important; }
   .freeangola .mobile-close-btn {
     display: block;
     position: absolute;
@@ -928,6 +968,8 @@ form {
     height: 100% !important; }
     .freeangola .main-content .column .song-data .options {
       margin-right: 10px; }
+  .freeangola .main-content .song-list .details {
+    width: calc(100% - 220px); }
   .freeangola .main-content .song-list .options {
     margin: 0; }
   .freeangola .main-content .song-list .song-opts .details {
