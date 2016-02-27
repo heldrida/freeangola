@@ -843,7 +843,9 @@ form {
     height: 24px; }
   .freeangola .txt-content.note p {
     margin-bottom: 0px;
-    padding-bottom: 0px; } }
+    padding-bottom: 0px; }
+  .mobile-close-btn {
+    display: none; } }
 
 /*
 ::-webkit-scrollbar {
@@ -886,6 +888,25 @@ form {
 }
 */
 @media only screen and (max-width: 1024px) {
+  .freeangola.menu-open .main-content {
+    -webkit-transform: translateX(-100%);
+    -khtml-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); }
+  .freeangola.menu-open .sidebar {
+    width: 100%; }
+  .freeangola .mobile-close-btn {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    margin: 0;
+    padding: 0; }
+    .freeangola .mobile-close-btn:after {
+      content: "X";
+      font-size: 30px; }
   .freeangola .player-controllers .song-title {
     font-size: 12px; }
   .freeangola .main-content .column .col-r {
@@ -968,7 +989,7 @@ form {
       .freeangola .sidebar .wrp form .usr-terms {
         margin-bottom: 16.25px; }
         .freeangola .sidebar .wrp form .usr-terms label:before {
-          top: 3px; }
+          top: -6px; }
         .freeangola .sidebar .wrp form .usr-terms span {
           font-size: 10.4px;
           letter-spacing: 1.3px;

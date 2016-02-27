@@ -7,7 +7,7 @@ console.log('app.js');
         heldrida is 2575422
  */
 
-function findAncestor (el, cls) {
+function findAncestor(el, cls) {
     while ((el = el.parentElement) && !el.classList.contains(cls));
     return el;
 }
@@ -90,6 +90,8 @@ window.addEventListener("load", function() {
 
             this.closeCollapse;
 
+            this.mobileCloseBtn = document.querySelector(".mobile-close-btn");
+
         },
 
         setEventListeners: function() {
@@ -122,26 +124,26 @@ window.addEventListener("load", function() {
                 }.bind(this));
 
                 // set property
-	            this.threeDots = document.querySelectorAll(".three-dots");
-	            _.forEach(this.threeDots, function (v, k) {
-	            	this.threeDots[k].addEventListener("click", this.threeDotsHandler.bind(this));
-	            }.bind(this));
+                this.threeDots = document.querySelectorAll(".three-dots");
+                _.forEach(this.threeDots, function(v, k) {
+                    this.threeDots[k].addEventListener("click", this.threeDotsHandler.bind(this));
+                }.bind(this));
 
-	            // set property
-	            this.closeCollapse = document.querySelectorAll(".close.collapse");
-	            _.forEach(this.closeCollapse, function (v, k) {
-	            	this.closeCollapse[k].addEventListener("click", this.closeCollapseHandler.bind(this));
-	            }.bind(this));
+                // set property
+                this.closeCollapse = document.querySelectorAll(".close.collapse");
+                _.forEach(this.closeCollapse, function(v, k) {
+                    this.closeCollapse[k].addEventListener("click", this.closeCollapseHandler.bind(this));
+                }.bind(this));
 
                 // set initial tracker info
                 this.updateTracker(0);
 
                 // if browser allows it, play first track
                 if (Modernizr.autoplay) {
-	                setTimeout(function() {
-	                    this.scPlayer.play();
-	                    this.pubSub.publish("/app/events/soundcloud/click", "play");
-	                }.bind(this), 300);
+                    setTimeout(function() {
+                        this.scPlayer.play();
+                        this.pubSub.publish("/app/events/soundcloud/click", "play");
+                    }.bind(this), 300);
                 }
 
                 this.injectFbSdk();
@@ -171,6 +173,8 @@ window.addEventListener("load", function() {
             this.termsConditionsCheckbox.addEventListener("click", this.termsConditionsCheckboxHandler.bind(this));
 
             this.columnRight = document.querySelector(".column-r");
+
+            this.mobileCloseBtn.addEventListener("click", this.mobileCloseBtnHandler.bind(this));
 
         },
 
@@ -374,7 +378,7 @@ window.addEventListener("load", function() {
 
         btnMenuClickHandler: function(e) {
 
-            e.preventDefault();
+            e ? e.preventDefault() : null;
 
             if (!this.freeAngolaContainer.classList.contains('menu-open')) {
                 this.freeAngolaContainer.classList.add('menu-open');
@@ -544,75 +548,78 @@ window.addEventListener("load", function() {
 
         },
 
-        threeDotsHandler: function (e) {
+        threeDotsHandler: function(e) {
 
-        	e.preventDefault();
-        	e.stopPropagation();
+            e.preventDefault();
+            e.stopPropagation();
 
-        	e.target.parentNode;
+            var parent = findAncestor(e.target, "row");
 
-        	var parent = findAncestor(e.target, "row");
+            if (!parent) {
+                return null;
+            }
 
-        	if (!parent) {
-        		return null;
-        	}
+            var songDataColR = parent.querySelector(".song-data .col-r");
+            var songOptions = parent.querySelector(".song-opts");
 
-        	var songDataColR = parent.querySelector(".song-data .col-r");
-        	var songOptions = parent.querySelector(".song-opts");
+            var tl = new TimelineLite({
+                onStart: function() {
+                    songOptions.classList.add("active");
+                }.bind(this),
+                onComplete: function() {
 
-        	var tl = new TimelineLite({
-        		onStart: function () {
-        			songOptions.classList.add("active");
-        		}.bind(this),
-        		onComplete: function () {
+                }.bind(this)
+            });
 
-        		}.bind(this)
-        	});
-
-        	tl.to(songDataColR, 0.2, { css: { opacity: 0 } }, 0);
+            tl.to(songDataColR, 0.2, { css: { opacity: 0 } }, 0);
 
         },
 
-        injectFbSdk: function () {
+        injectFbSdk: function() {
 
-		    (function(d, s, id) {
-		        var js, fjs = d.getElementsByTagName(s)[0];
-		        if (d.getElementById(id)) return;
-		        js = d.createElement(s);
-		        js.async=true;
-		        js.id = id;
-		        js.src = "//connect.facebook.net/pt_PT/sdk.js#xfbml=1&version=v2.5&appId=1365519160254676";
-		        fjs.parentNode.insertBefore(js, fjs);
-		    }(document, 'script', 'facebook-jssdk'));
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.async = true;
+                js.id = id;
+                js.src = "//connect.facebook.net/pt_PT/sdk.js#xfbml=1&version=v2.5&appId=1365519160254676";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
 
         },
 
-        closeCollapseHandler: function (e) {
+        closeCollapseHandler: function(e) {
 
-        	e.preventDefault();
-        	e.stopPropagation();
-        	e.target.parentNode;
+            e.preventDefault();
+            e.stopPropagation();
 
-        	var parent = findAncestor(e.target, "row");
+            var parent = findAncestor(e.target, "row");
 
-        	if (!parent) {
-        		return null;
-        	}
+            if (!parent) {
+                return null;
+            }
 
-        	var songDataColR = parent.querySelector(".song-data .col-r");
-        	var songOptions = parent.querySelector(".song-opts");
+            var songDataColR = parent.querySelector(".song-data .col-r");
+            var songOptions = parent.querySelector(".song-opts");
 
-        	var tl = new TimelineLite({
-        		onStart: function () {
+            var tl = new TimelineLite({
+                onStart: function() {
 
-        		}.bind(this),
-        		onComplete: function () {
-        			songOptions.classList.remove("active");
-        		}.bind(this)
-        	});
+                }.bind(this),
+                onComplete: function() {
+                    songOptions.classList.remove("active");
+                }.bind(this)
+            });
 
-        	tl.to(songDataColR, 0.2, { css: { opacity: 1 } }, 0);
+            tl.to(songDataColR, 0.2, { css: { opacity: 1 } }, 0);
 
+
+        },
+
+        mobileCloseBtnHandler: function() {
+
+            this.btnMenuClickHandler();
 
         }
 
