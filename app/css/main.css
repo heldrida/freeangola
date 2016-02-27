@@ -125,7 +125,8 @@ html,
 body,
 .freeangola {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  background: #C32F27; }
 
 textarea:focus,
 input:focus {
@@ -1027,7 +1028,8 @@ form {
         letter-spacing: 2px;
         border: 2px solid #000;
         overflow: hidden;
-        border-radius: 2px; }
+        border-radius: 2px;
+        text-indent: 5px; }
       .freeangola .sidebar .wrp form .usr-terms {
         margin-bottom: 16.25px; }
         .freeangola .sidebar .wrp form .usr-terms label:before {
