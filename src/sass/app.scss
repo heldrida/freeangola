@@ -60,6 +60,18 @@ button {
                 line-height: 40px;
                 font-size: 32px;
                 letter-spacing: 2px;
+                position: relative;
+                display: inline-block;
+                &:after {
+                    content: " ";
+                    display: inline-block;
+                    width: 100%;
+                    height: 2px;
+                    background: #000;
+                    position: absolute;
+                    bottom: -6px;
+                    left: 0;
+                }
             }
             p {
                 line-height: 28px;

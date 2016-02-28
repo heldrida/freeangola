@@ -188,7 +188,18 @@ button {
       .freeangola .sidebar .txt-content h3 {
         line-height: 40px;
         font-size: 32px;
-        letter-spacing: 2px; }
+        letter-spacing: 2px;
+        position: relative;
+        display: inline-block; }
+        .freeangola .sidebar .txt-content h3:after {
+          content: " ";
+          display: inline-block;
+          width: 100%;
+          height: 2px;
+          background: #000;
+          position: absolute;
+          bottom: -6px;
+          left: 0; }
       .freeangola .sidebar .txt-content p {
         line-height: 28px;
         font-size: 18px;
