@@ -283,7 +283,7 @@ button {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       border: 1px solid #000;
       border-radius: 50%;
-      background-image: url(../img/logo-peace-dove.svg?201602201217);
+      background-image: url(../img/logo-dove-v2.svg?201602201217);
       background-repeat: no-repeat;
       background-position: center;
       background-size: 100%;
@@ -681,6 +681,11 @@ button {
       height: 100%;
       background-color: #F7A438;
       opacity: 0.5; }
+
+.fb-like {
+  pointer-events: auto;
+  position: relative;
+  z-index: 99; }
 
 .mailto-wrp a {
   color: inherit;
