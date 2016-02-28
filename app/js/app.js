@@ -392,8 +392,9 @@ window.addEventListener("load", function() {
             var track = this.scPlayer._playlist.tracks[this.scPlayer._playlistIndex ? this.scPlayer._playlistIndex : 0];
 
             var titleData = this.splitTitleData(track.title);
-
-            this.songTitleTxt.innerHTML = "<" + titleData["artist"] + "> " + titleData["title"];
+            console.log("titleData", titleData);
+            console.log("<" + titleData["artist"] + "> " + titleData["title"]);
+            this.songTitleTxt.innerHTML = "[" + titleData["artist"] + "] " + titleData["title"];
 
             this.updateTracker(this.scPlayer._playlistIndex + 1);
 
