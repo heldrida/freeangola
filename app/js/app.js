@@ -92,6 +92,10 @@ window.addEventListener("load", function() {
 
             this.mobileCloseBtn = document.querySelector(".mobile-close-btn");
 
+            this.sidebar = document.querySelector(".sidebar");
+
+            this.spinner = document.querySelector(".spinner");
+
         },
 
         setEventListeners: function() {
@@ -177,6 +181,8 @@ window.addEventListener("load", function() {
             this.columnRight = document.querySelector(".column-r");
 
             this.mobileCloseBtn.addEventListener("click", this.mobileCloseBtnHandler.bind(this));
+
+            this.uploadSuccessMsg = document.querySelector(".upload-success-message");
 
         },
 
@@ -421,6 +427,10 @@ window.addEventListener("load", function() {
 
         sendFile: function(data) {
 
+            // show spinner
+            this.form.style.display = "none";
+            this.spinner.style.display = "block";
+
             data = JSON.parse(data);
 
             // http://stackoverflow.com/questions/7034358/upload-into-my-soundcloud-account-using-my-web-form-and-api
@@ -444,8 +454,7 @@ window.addEventListener("load", function() {
             });
 
             upload.request.addEventListener('progress', function(e) {
-                console.log(e);
-                //console.log('progress: ', (e.loaded / e.total) * 100, '%');
+                console.log("upload in progress!");
             }.bind(this));
 
             upload.then(function(track) {
@@ -507,6 +516,36 @@ window.addEventListener("load", function() {
 
             console.log("permalink_url", permalink_url);
 
+            // reset
+            this.form.reset();
+            this.form.classList.remove("valid");
+
+            this.form.style.display = "none";
+
+            TweenLite.to(this.uploadSuccessMsg, 0.3, {
+                css: { opacity: 1 },
+                onStart: function() {
+                    this.spinner.style.display = "";
+                    this.uploadSuccessMsg.style.display = "block";
+                    var sidebar = document.querySelector(".sidebar");
+                    sidebar.scrollTop = sidebar.scrollHeight;
+                }.bind(this)
+            });
+
+            setTimeout(function() {
+
+                TweenLite.to(this.uploadSuccessMsg, 0.3, {
+                    css: { opacity: 0 },
+                    onComplete: function() {
+                        this.uploadSuccessMsg.style.display = "";
+                        this.form.style.display = "";
+                        var sidebar = document.querySelector(".sidebar");
+                        sidebar.scrollTop = sidebar.scrollHeight;
+                    }.bind(this)
+                });
+
+            }.bind(this), 8000);
+
         },
 
         validateForm: function() {
@@ -514,7 +553,6 @@ window.addEventListener("load", function() {
             console.log("this.form.terms_and_conditions.checked", this.form.terms_and_conditions.checked);
 
             if (this.form.terms_and_conditions.checked && this.form.song_title.value.length > 0 && this.form.audio.files && this.form.audio.files.length === 1 && this.form.audio.files[0].type === "audio/mp3") {
-
                 this.form.classList.add("valid");
                 TweenLite.to(this.form.submit, 0.3, {
                     css: { opacity: 1 },
