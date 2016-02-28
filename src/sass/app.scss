@@ -183,13 +183,12 @@ button {
         z-index: 1;
         overflow: hidden;
         background-color: #000;
-        img {
+        .vinyl {
+            width: 75%;
+            height: auto;
+            left: 50%;
             position: absolute;
-            margin: auto;
-            width: auto;
-            height: 100%;
-            left: -100%;
-            right: -100%;
+            @include transform(translateX(-50%));
         }
     }
     .player-controllers {
@@ -917,6 +916,10 @@ form {
         }
         .main-poster {
             height: 35vh;
+            .vinyl {
+                width: 75%;
+                height: auto;
+            }
         }
         .player-controllers {
             height: 175px;
