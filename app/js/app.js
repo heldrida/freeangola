@@ -439,18 +439,27 @@ window.addEventListener("load", function() {
 
             var upload = SC.upload({
                 asset_data: this.form.audio.files[0],
-                title: 'This upload took quite some while',
+                title: this.setTitle(this.form),
                 artwork_data: this.form.poster.files[0] ? this.form.poster.files[0] : ""
             });
 
             upload.request.addEventListener('progress', function(e) {
                 console.log(e);
                 //console.log('progress: ', (e.loaded / e.total) * 100, '%');
-            });
+            }.bind(this));
 
             upload.then(function(track) {
                 this.pubSub.publish("/app/events/soundcloud/upload_finished", track.permalink_url);
-            });
+            }.bind(this));
+
+        },
+
+        setTitle: function(form) {
+
+            var artist = form.artist.value;
+            var song_title = form.song_title.value;
+
+            return artist + "|" + song_title;
 
         },
 
