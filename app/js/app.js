@@ -107,6 +107,8 @@ window.addEventListener("load", function() {
 
                 this.compileTemplates.call(this, { playlist: playlist });
 
+                console.log("playlist", playlist);
+
                 this.scPlayer.on('ended', this.btnNextHandler.bind(this));
 
                 this.scPlayer.on('ended', function() {
