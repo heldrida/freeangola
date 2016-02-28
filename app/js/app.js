@@ -96,6 +96,13 @@ window.addEventListener("load", function() {
 
             this.spinner = document.querySelector(".spinner");
 
+            // prevent spam
+            var mailAddress = "NOSPMSPMSPMinfo@freeangola.comNOSPMSPMSPM";
+            mailAddress = mailAddress.split("NOSPMSPMSPM");
+            this.mailTo = document.querySelector(".mailto");
+            this.mailTo.setAttribute("href", "mailto:" + mailAddress[1]);
+            this.mailTo.text = mailAddress[1];
+
         },
 
         setEventListeners: function() {

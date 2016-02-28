@@ -682,6 +682,17 @@ button {
       background-color: #F7A438;
       opacity: 0.5; }
 
+.mailto-wrp a {
+  color: inherit;
+  -webkit-transition: opacity 0.2s;
+  -khtml-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  transition: opacity 0.2s; }
+  .mailto-wrp a:hover {
+    color: #F7A438; }
+
 .upload-success-message {
   width: auto;
   margin: 0 20px;

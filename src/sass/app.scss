@@ -531,6 +531,16 @@ button {
     }
 }
 
+.mailto-wrp {
+    a {
+        color: inherit;
+        @include transition(opacity 0.2s);
+        &:hover {
+            color: $yellow-gold;
+        }
+    }
+}
+
 .upload-success-message {
     width: auto;
     margin: 0 20px;
