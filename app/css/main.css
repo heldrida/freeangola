@@ -899,7 +899,9 @@ form {
   .freeangola header h1 {
     padding-left: 70px; }
   .freeangola header .menu {
-    right: 0px; }
+    right: 20px;
+    padding: 0;
+    margin: 0; }
   .freeangola.menu-open .main-content {
     -webkit-transform: translateX(-100%);
     -khtml-transform: translateX(-100%);
@@ -944,7 +946,8 @@ form {
     top: 10px;
     right: 20px;
     margin: 0;
-    padding: 0; }
+    padding: 0;
+    background: none; }
     .freeangola .mobile-close-btn:after {
       content: "X";
       font-size: 30px; }
