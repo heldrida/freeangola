@@ -204,27 +204,39 @@ window.addEventListener("load", function() {
 
         },
 
+        splitTitleData
+: function (title) {
+
+            var titleData = title.split("|");
+
+            if (titleData.length == 2) {
+                strTitle = titleData[1];
+                strArtist = titleData[0];
+            } else {
+                strTitle = titleData[0];
+                strArtist = "Anónimo";
+            }
+
+            return {
+                title: strTitle,
+                artist: strArtist
+            };
+
+        },
+
         compileSongList: function(tracks) {
 
             var data = _.map(tracks, function(track) {
 
-                var titleData = track.title.split("|");
-
-                if (titleData.length == 2) {
-                    strTitle = titleData[1];
-                    strArtist = titleData[0];
-                } else {
-                    strTitle = titleData[0];
-                    strArtist = "Anónimo";
-                }
+                var titleData = this.splitTitleData(track.title);
 
                 return {
                     poster: track.artwork_url,
-                    title: strTitle,
-                    artist: strArtist,
+                    title: titleData["title"],
+                    artist: titleData["artist"],
                     waveform: track.waveform_url
                 };
-            });
+            }.bind(this));
 
             console.log(data);
 
@@ -379,7 +391,9 @@ window.addEventListener("load", function() {
 
             var track = this.scPlayer._playlist.tracks[this.scPlayer._playlistIndex ? this.scPlayer._playlistIndex : 0];
 
-            this.songTitleTxt.innerHTML = track.title;
+            var titleData = this.splitTitleData(track.title);
+
+            this.songTitleTxt.innerHTML = "<" + titleData["artist"] + "> " + titleData["title"];
 
             this.updateTracker(this.scPlayer._playlistIndex + 1);
 
