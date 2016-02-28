@@ -207,10 +207,21 @@ window.addEventListener("load", function() {
         compileSongList: function(tracks) {
 
             var data = _.map(tracks, function(track) {
+
+                var titleData = track.title.split("|");
+
+                if (titleData.length == 2) {
+                    strTitle = titleData[1];
+                    strArtist = titleData[0];
+                } else {
+                    strTitle = titleData[0];
+                    strArtist = "Anónimo";
+                }
+
                 return {
                     poster: track.artwork_url,
-                    title: track.title,
-                    artist: "Artist name",
+                    title: strTitle,
+                    artist: strArtist,
                     waveform: track.waveform_url
                 };
             });
