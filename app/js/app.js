@@ -413,8 +413,10 @@ window.addEventListener("load", function() {
 
             e.preventDefault();
 
-            var currentTarget = e.target;
-            var index = [].indexOf.call(currentTarget.parentNode.children, currentTarget);
+            var currentTarget = findAncestor(e.target, "row");
+            var parent = findAncestor(currentTarget, "ul-song-list");
+
+            var index = [].indexOf.call(parent.children, currentTarget);
 
             this.scPlayer.play({ playlistIndex: index });
             this.pubSub.publish("/app/events/soundcloud/click", "play");
