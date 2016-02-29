@@ -603,7 +603,7 @@ window.addEventListener("load", function() {
 
             console.log("this.form.terms_and_conditions.checked", this.form.terms_and_conditions.checked);
 
-            if (this.form.terms_and_conditions.checked && this.form.song_title.value.length > 0 && this.form.audio.files && this.form.audio.files.length === 1 && this.form.audio.files[0].type === "audio/mp3") {
+            if (this.form.terms_and_conditions.checked && this.form.song_title.value.length > 0 && this.form.audio.files && this.form.audio.files.length === 1 && _.indexOf(["audio/mp3", "audio/mpeg"], this.form.audio.files[0].type) > -1) {
                 this.form.classList.add("valid");
                 TweenLite.to(this.form.submit, 0.3, {
                     css: { opacity: 1 },

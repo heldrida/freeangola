@@ -1,11 +1,15 @@
 <?php
-	
-	if (stripos($_SERVER["HTTP_HOST"], "freeangola")) {
+
+	if (stripos($_SERVER["HTTP_HOST"], "dev.freeangola")) {
+
+		header("Access-Control-Allow-Origin: http://dev.freeangola.com");
+
+	} else if (stripos($_SERVER["HTTP_HOST"], "freeangola")) {
 
 		header("Access-Control-Allow-Origin: http://freeangola.com");
 
 	} else {
-	
+
 		header("Access-Control-Allow-Origin: *");
 
 	}
