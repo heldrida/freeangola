@@ -602,6 +602,10 @@ window.addEventListener("load", function() {
         validateForm: function() {
 
             console.log("this.form.terms_and_conditions.checked", this.form.terms_and_conditions.checked);
+            console.log("this.form.song_title.value.length", this.form.song_title.value.length);
+            console.log("this.form.audio.files", this.form.audio.files);
+            console.log("this.form.audio.files.length", this.form.audio.files.length);
+            console.log('_.indexOf(["audio/mp3", "audio/mpeg"], this.form.audio.files[0].type)', _.indexOf(["audio/mp3", "audio/mpeg"], this.form.audio.files[0].type));
 
             if (this.form.terms_and_conditions.checked && this.form.song_title.value.length > 0 && this.form.audio.files && this.form.audio.files.length === 1 && _.indexOf(["audio/mp3", "audio/mpeg"], this.form.audio.files[0].type) > -1) {
                 this.form.classList.add("valid");
