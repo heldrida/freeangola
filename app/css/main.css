@@ -327,14 +327,9 @@ button {
     .freeangola .main-poster .vinyl {
       width: 100%;
       height: auto;
-      left: 50%;
-      position: absolute;
-      -webkit-transform: translateX(-50%);
-      -khtml-transform: translateX(-50%);
-      -moz-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      -o-transform: translateX(-50%);
-      transform: translateX(-50%); }
+      display: block;
+      position: relative;
+      margin: 0 auto; }
   .freeangola .player-controllers {
     width: 100%;
     height: 180px;

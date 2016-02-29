@@ -205,6 +205,41 @@ window.addEventListener("load", function() {
 
             this.uploadSuccessMsg = document.querySelector(".upload-success-message");
 
+            window.addEventListener("resize", _.throttle(this.vinylOnWinResizeHandler.bind(this), 800));
+
+        },
+
+        vinylOnWinResizeHandler: function () {
+
+        	return;
+
+        	console.log('vinylOnWinResizeHandler fn call')
+
+        	if (typeof this.tlVinyl !== "undefined") {
+
+		    	this.tlVinyl.stop();
+		    	this.tlVinyl.clear();
+		    	this.tlVinyl.kill();
+
+		    	setTimeout(function () {
+
+					this.vinyl.setAttribute("style", "");
+			    	this.tlVinyl = null;
+
+					this.tlVinyl = new TimelineMax({ repeat: -1 });
+					this.tlVinyl.to(this.vinyl, 1.2, { rotation: "360", transformOrigin: "50% 50%", ease: Linear.easeNone });
+
+					if (this.scPlayer.playing) {
+						this.tlVinyl.play();
+					} else {
+						this.tlVinyl.stop();
+					}
+
+		    	}.bind(this), 0);
+
+
+        	}
+
         },
 
         setAnimationTimelines: function() {
