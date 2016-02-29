@@ -278,8 +278,10 @@ window.addEventListener("load", function() {
 
                 var titleData = this.splitTitleData(track.title);
 
+				var poster = track.artwork_url ? track.artwork_url.replace("-large", "-crop") : ""; // t500x500
+
                 return {
-                    poster: track.artwork_url,
+                    poster: poster,
                     title: titleData["title"],
                     artist: titleData["artist"],
                     waveform: track.waveform_url
