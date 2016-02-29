@@ -109,7 +109,9 @@ window.addEventListener("load", function() {
             this.tlVinyl.to(this.vinyl, 1.2, { rotation: "360", transformOrigin: "50% 50%", ease: Linear.easeNone });
             this.tlVinyl.stop();
 
-            this.baseURL = location.hostname.indexOf("localhost") > -1 || location.hostname.indexOf("magnolia") ? "http://localhost:8888/freeangola/app/" : "";
+            this.baseURL = location.hostname.indexOf("localhost") > -1 || location.hostname.indexOf("magnolia") > -1 ? "http://localhost:8888/freeangola/app/" : "";
+
+            console.log("this.baseURL", this.baseURL);
 
         },
 
