@@ -860,6 +860,39 @@ form {
       form .usr-terms label.checked:after {
         display: block; }
 
+.turntable-arm {
+  /*
+	position: absolute;
+	top: 50%;
+	left: 0%;
+	width: 20%;
+	height: auto;
+	transform: translateX(50%);
+	*/
+  position: absolute;
+  top: 44%;
+  left: 0%;
+  width: 17.5%;
+  height: auto;
+  -webkit-animation: turntablearm 1.2s infinite ease-in-out;
+  animation: turntablearm 1.2s infinite ease-in-out; }
+
+@-webkit-keyframes turntablearm {
+  0%,
+  100% {
+    -webkit-transform: rotate(-40deg); }
+  50% {
+    -webkit-transform: rotate(-42deg); } }
+
+@keyframes turntablearm {
+  0%,
+  100% {
+    transform: translateX(150%) rotate(-40deg);
+    -webkit-transform: translateX(150%) rotate(-40deg); }
+  50% {
+    transform: translateX(150%) rotate(-41deg);
+    -webkit-transform: translateX(150%) rotate(-41deg); } }
+
 .spinner {
   margin: 100px auto;
   width: 100px;
