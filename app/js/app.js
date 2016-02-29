@@ -111,7 +111,7 @@ window.addEventListener("load", function() {
 
             this.baseURL = location.hostname.indexOf("localhost") > -1 || location.hostname.indexOf("magnolia") > -1 ? "http://localhost:8888/freeangola/app/" : "";
 
-            console.log("this.baseURL", this.baseURL);
+            this.floatingLogo = document.querySelector('.floating-logo');
 
         },
 
@@ -205,39 +205,32 @@ window.addEventListener("load", function() {
 
             this.uploadSuccessMsg = document.querySelector(".upload-success-message");
 
-            window.addEventListener("resize", _.throttle(this.vinylOnWinResizeHandler.bind(this), 800));
+            window.addEventListener("scroll", this.scrollHandler.bind(this));
+
+            this.floatingLogo.addEventListener("click", function (e) {
+
+            	this.menu.click();
+
+            }.bind(this));
 
         },
 
-        vinylOnWinResizeHandler: function () {
+        scrollHandler: function (e) {
 
-        	return;
+        	if (window.innerWidth > 1024) {
+        		return null;
+        	}
 
-        	console.log('vinylOnWinResizeHandler fn call')
-
-        	if (typeof this.tlVinyl !== "undefined") {
-
-		    	this.tlVinyl.stop();
-		    	this.tlVinyl.clear();
-		    	this.tlVinyl.kill();
-
-		    	setTimeout(function () {
-
-					this.vinyl.setAttribute("style", "");
-			    	this.tlVinyl = null;
-
-					this.tlVinyl = new TimelineMax({ repeat: -1 });
-					this.tlVinyl.to(this.vinyl, 1.2, { rotation: "360", transformOrigin: "50% 50%", ease: Linear.easeNone });
-
-					if (this.scPlayer.playing) {
-						this.tlVinyl.play();
-					} else {
-						this.tlVinyl.stop();
-					}
-
-		    	}.bind(this), 0);
-
-
+        	if (window.pageYOffset > 50) {
+        		TweenLite.to(this.floatingLogo, 0.3, { css: { opacity: 1, y: 0, ease: Back. easeOut.config( 1.7) }, onStart: function () {
+        				this.floatingLogo.style.display = "block";
+        			}.bind(this)
+        		});
+        	} else {
+        		TweenLite.to(this.floatingLogo, 0.3, { css: { opacity: 0, y: 100, ease: Back. easeOut.config( 1.7) }, onComplete: function () {
+        				this.floatingLogo.style.display = "none";
+        			}.bind(this)
+        		});
         	}
 
         },
