@@ -103,8 +103,11 @@ window.addEventListener("load", function() {
             this.mailTo.setAttribute("href", "mailto:" + mailAddress[1]);
             this.mailTo.text = mailAddress[1];
 
-            var vinyl = document.querySelector(".vinyl");
-            TweenMax.to(vinyl, 1, { rotation: "360", transformOrigin: "center center", ease: Linear.easeNone, repeat: -1 });
+            this.vinyl = document.querySelector(".vinyl");
+
+            this.tlVinyl = new TimelineMax({ repeat: -1 });
+            this.tlVinyl.to(this.vinyl, 1.2, { rotation: "360", transformOrigin: "50% 50%", ease: Linear.easeNone });
+            this.tlVinyl.stop();
 
         },
 
@@ -130,6 +133,10 @@ window.addEventListener("load", function() {
                 });
 
                 this.scPlayer.on('play', this.playCallHandler.bind(this));
+
+                this.scPlayer.on('pause', function() {
+                    this.tlVinyl.stop();
+                }.bind(this));
 
                 // set property
                 this.songListUlLi = this.songListUl.querySelectorAll('li');
@@ -325,7 +332,7 @@ window.addEventListener("load", function() {
 
             // reset bar if any play next or previous options selected
             if (_.indexOf(["next", "previous"], param) > -1) {
-                //TweenMax.set(this.percentageBarSpan, { css: { width: "0%" } });
+                //TweenLite.set(this.percentageBarSpan, { css: { width: "0%" } });
                 this.percentageBarSpan.style.width = (0 + "%");
 
                 // ensure that the button attribute is set correctly
@@ -356,22 +363,22 @@ window.addEventListener("load", function() {
         setPlayNextPrevControllerVsibility: function() {
 
             if (!this.scPlayer._playlistIndex) {
-                TweenMax.to(this.btnPrevious, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
+                TweenLite.to(this.btnPrevious, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
                 return null;
             }
 
             // hide button next if current index equals or bigger then length of tracks
             if (this.scPlayer._playlistIndex >= this.scPlayer._playlist.tracks.length - 1) {
-                TweenMax.to(this.btnNext, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
+                TweenLite.to(this.btnNext, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
             } else {
-                TweenMax.to(this.btnNext, 0.2, { css: { opacity: 1 } });
+                TweenLite.to(this.btnNext, 0.2, { css: { opacity: 1 } });
             }
 
             // hide button previous if current index is first
             if (!this.scPlayer._playlistIndex || this.scPlayer._playlistIndex === 0) {
-                TweenMax.to(this.btnPrevious, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
+                TweenLite.to(this.btnPrevious, 0.2, { css: { opacity: this.playControllersCommonOpacity } });
             } else {
-                TweenMax.to(this.btnPrevious, 0.2, { css: { opacity: 1 } });
+                TweenLite.to(this.btnPrevious, 0.2, { css: { opacity: 1 } });
             }
 
         },
@@ -393,6 +400,9 @@ window.addEventListener("load", function() {
             this.songListUlLi[this.scPlayer._playlistIndex].classList.add('active');
 
             this.setCurrentSongMetadata();
+
+            this.tlVinyl.play();
+
 
         },
 
@@ -559,7 +569,7 @@ window.addEventListener("load", function() {
 
             this.form.style.display = "none";
 
-            TweenMax.to(this.uploadSuccessMsg, 0.3, {
+            TweenLite.to(this.uploadSuccessMsg, 0.3, {
                 css: { opacity: 1 },
                 onStart: function() {
                     this.spinner.style.display = "";
@@ -571,7 +581,7 @@ window.addEventListener("load", function() {
 
             setTimeout(function() {
 
-                TweenMax.to(this.uploadSuccessMsg, 0.3, {
+                TweenLite.to(this.uploadSuccessMsg, 0.3, {
                     css: { opacity: 0 },
                     onComplete: function() {
                         this.uploadSuccessMsg.style.display = "";
@@ -591,7 +601,7 @@ window.addEventListener("load", function() {
 
             if (this.form.terms_and_conditions.checked && this.form.song_title.value.length > 0 && this.form.audio.files && this.form.audio.files.length === 1 && this.form.audio.files[0].type === "audio/mp3") {
                 this.form.classList.add("valid");
-                TweenMax.to(this.form.submit, 0.3, {
+                TweenLite.to(this.form.submit, 0.3, {
                     css: { opacity: 1 },
                     onStart: function() {
 
@@ -604,7 +614,7 @@ window.addEventListener("load", function() {
             } else {
 
                 this.form.classList.remove("valid");
-                TweenMax.to(this.form.submit, 0.3, {
+                TweenLite.to(this.form.submit, 0.3, {
                     css: { opacity: 0 },
                     onComplete: function() {
 
