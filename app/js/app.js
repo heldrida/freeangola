@@ -570,6 +570,7 @@ window.addEventListener("load", function() {
             // reset
             this.form.reset();
             this.form.classList.remove("valid");
+            this.form.submit.setAttribute("style", "");
 
             this.form.style.display = "none";
 
