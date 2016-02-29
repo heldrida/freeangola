@@ -109,6 +109,8 @@ window.addEventListener("load", function() {
             this.tlVinyl.to(this.vinyl, 1.2, { rotation: "360", transformOrigin: "50% 50%", ease: Linear.easeNone });
             this.tlVinyl.stop();
 
+            this.baseURL = location.hostname.indexOf("localhost") > -1 || location.hostname.indexOf("magnolia") ? "http://localhost:8888/freeangola/app/" : "";
+
         },
 
         setEventListeners: function() {
@@ -467,7 +469,7 @@ window.addEventListener("load", function() {
 
             e.preventDefault();
 
-            this.callAjax("http://localhost:8888/freeangola/app/auth/request_token.php", this.sendFile.bind(this));
+            this.callAjax(this.baseURL + "/auth/request_token.php", this.sendFile.bind(this));
 
         },
 
