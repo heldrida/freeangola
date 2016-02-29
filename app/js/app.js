@@ -278,7 +278,7 @@ window.addEventListener("load", function() {
 
                 var titleData = this.splitTitleData(track.title);
 
-				var poster = track.artwork_url ? track.artwork_url.replace("-large", "-crop") : ""; // t500x500
+				var poster = track.artwork_url ? track.artwork_url.replace("-large", "-crop") : "img/track-default.jpg?201602291616"; // t500x500
 
                 return {
                     poster: poster,
