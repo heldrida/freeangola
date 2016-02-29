@@ -571,6 +571,7 @@ window.addEventListener("load", function() {
             this.form.reset();
             this.form.classList.remove("valid");
             this.form.submit.setAttribute("style", "");
+            this.termsConditionsCheckbox.classList.remove('checked');
 
             this.form.style.display = "none";
 
