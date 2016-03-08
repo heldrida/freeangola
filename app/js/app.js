@@ -669,8 +669,13 @@ window.addEventListener("load", function() {
         },
 
         termsConditionsCheckboxHandler: function(e) {
-            e.stopPropagation();
-            e.preventDefault();
+
+            if (e.target.hasAttribute("href")) {
+	            return null;
+            } else {
+	            e.stopPropagation();
+	            e.preventDefault();
+            }
 
             if (!this.termsConditionsCheckbox.classList.contains('checked')) {
                 this.termsConditionsCheckbox.classList.add('checked');
